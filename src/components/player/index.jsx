@@ -11,10 +11,29 @@ export default function Player({ skin }) {
     };
 
     useKeyPress((e) => {
-        // arrow is replaced with empty string so we just have directions
-        walk(e.key.replace("Arrow", "").toLowerCase());
         // prevent keyboard from reacting with browser
         e.preventDefault();
+        // move with 'WASD' or Arrow keys
+        switch (e.keyCode) {
+            case 37:
+            case 65:
+                return walk('left');
+            case 38:
+            case 87:
+                return walk('up');
+            case 39:
+            case 68:
+                return walk('right');
+            case 40:
+            case 83:
+                return walk('down');
+            case 13:
+            case 32:
+            // action with enter or space key
+            // return action();
+            default:
+                console.log('key not mapped: ', e.keyCode);
+        }
     });
 
     return <Actor sprite={`./assets/${skin}.png`} data={data} step={step} dir={dir} position={position} />;

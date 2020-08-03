@@ -34,7 +34,6 @@ export default function useWalk(maxSteps) {
         setPosition(prev => ({
             x: prev.x + modifier[dir].x,
             y: prev.y + modifier[dir].y,
-
         }));
     }
 
