@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import level1 from '../../levels/level1';
 
 export default function useWalk(maxSteps) {
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -31,10 +32,19 @@ export default function useWalk(maxSteps) {
     };
 
     function move(dir) {
-        setPosition(prev => ({
-            x: prev.x + modifier[dir].x,
-            y: prev.y + modifier[dir].y,
-        }));
+        console.log(level1.tiles);
+        console.log((position.x + modifier[dir].x) / 16);
+        console.log((position.y + modifier[dir].y) / 16);
+        level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] !== 5 ?
+            setPosition(prev => ({
+                //x: Level.level1.tiles[prev.x + modifier[dir].x] != 5 ? prev.x + modifier[dir].x : prev.x,
+                x: prev.x + modifier[dir].x,
+                y: prev.y + modifier[dir].y,
+            })) :
+            setPosition(prev => ({
+                x: prev.x,
+                y: prev.y
+            }));
     }
 
     return {
