@@ -1,3 +1,5 @@
+import level2 from "../level2";
+
 const tiles = [
   [0, 0, 0, 0, 5, 5, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
   [0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 5, 5, 5, 5],
@@ -16,6 +18,14 @@ const tiles = [
   [5, 5, 5, 5, 5, 5, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
 ];
 
+// const tiles = [
+//   [0, 0, 5, 5, 5],
+//   [0, 0, 0, 20, 5],
+//   [5, 0, 0, 0, 5],
+//   [5, 0, 0, 0, 5],
+//   [5, 5, 5, 5, 5],
+// ]
+
 const title = "Level 1 - The Beginning";
 
 const characters = [
@@ -31,14 +41,25 @@ const characters = [
 
 const playerStartingPoint = (5, 5);
 
-const puzzle = {};
+const puzzle = "puzzle";
 
-const answer = {};
+const answer = "answer";
 
-const message = {
-  title: 'Welcome',
-  body: ``
-};
+const hints = [
+  "Hint 1",
+  "Hint 2",
+  "Hint 3"
+];
+
+const messages = [
+  "Hello student...",
+  "Escape this high school by completing your college application. yaknow, the thing you've been procrastinating on? Good luck!",
+  "Enter hello in the text box to begin"
+];
+
+const messageTitle = ["Myra"];
+
+const next = level2;
 
 export default {
   tiles,
@@ -47,5 +68,8 @@ export default {
   playerStartingPoint,
   puzzle,
   answer,
-  message
+  hints,
+  messages,
+  messageTitle,
+  next,
 };
