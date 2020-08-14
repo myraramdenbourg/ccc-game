@@ -33,9 +33,16 @@ const characters = [
     type: 'teacher',
     position: (10, 10),
     dialogue: [
-      "Hello student...",
-      "Escape this high school by completing your college application. yaknow, the thing you've been procrastinating on? Good luck!",
-      "Enter hello in the text box to begin"]
+      "Hi I'm the teacher",
+      "hihihihi"]
+  },
+  {
+    type: 'box1',
+    position: (15, 15),
+    dialogue: [
+      "this is box1"
+    ],
+    // action: showLetter()
   }
 ];
 
@@ -52,7 +59,7 @@ const hints = [
 ];
 
 const messages = [
-  "Hello student...",
+  "Huh? Where am I… some kind of dungeon looking place.. maybe I should look around.",
   "Escape this high school by completing your college application. yaknow, the thing you've been procrastinating on? Good luck!",
   "Enter hello in the text box to begin"
 ];

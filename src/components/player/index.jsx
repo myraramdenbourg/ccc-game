@@ -30,6 +30,7 @@ export default function Player({ skin }) {
             case 13:
             case 32:
                 // action with enter or space key
+                // TODO: change this so that you can do an action from any direction
                 return action('down');
             default:
                 console.log('key not mapped: ', e.keyCode);
