@@ -4,7 +4,7 @@ import useKeyPress from "../../hooks/use-key-press";
 import useWalk from "../../hooks/use-walk"
 
 export default function Player({ skin }) {
-    const { dir, step, walk, position } = useWalk(3);
+    const { dir, step, walk, position, action } = useWalk(3);
     const data = {
         h: 32,
         w: 32,
@@ -29,8 +29,8 @@ export default function Player({ skin }) {
                 return walk('down');
             case 13:
             case 32:
-            // action with enter or space key
-            // return action();
+                // action with enter or space key
+                return action('down');
             default:
                 console.log('key not mapped: ', e.keyCode);
         }
