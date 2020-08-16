@@ -37,7 +37,10 @@ const characters = [
   }
 ];
 
-const playerStartingPoint = (5, 5);
+const playerStartingPoint = {
+  row: 19, // row
+  column: 8 // tile
+}
 
 const puzzle = "puzzle";
 

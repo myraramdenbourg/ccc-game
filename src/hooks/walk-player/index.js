@@ -1,9 +1,9 @@
 import { useState } from "react";
 import level1 from "../../components/levels";
 
-export default function WalkPlayer(maxSteps) {
+export default function WalkPlayer(maxSteps, startingPoint) {
 
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({ x: startingPoint.x, y: startingPoint.y });
     const [dir, setDir] = useState(0);
     const stepSize = 16;
     const directions = {

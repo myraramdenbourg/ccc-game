@@ -16,6 +16,7 @@ class Zone extends React.Component {
     mapWidth;
     tileWidth;
     tileHeight;
+    level;
 
     constructor(props) {
         super(props);
@@ -24,8 +25,8 @@ class Zone extends React.Component {
         };
 
         // Parse the TMX file
-        const level = props.level;
-        const sources = level["sources"];
+        this.level = props.level;
+        const sources = this.level["sources"];
         const _map = sources["level"];
 
         this.mapHeight = _map["height"]; // In number of tiles
@@ -93,6 +94,8 @@ class Zone extends React.Component {
                 // Number of rows is the level's height
                 const rows = new Array(this.mapHeight);
                 for (let i = 0; i < layerData.length; i++) {
+                    const index = Math.floor(i / this.mapWidth); // Round down to the row's number using the width
+                    const column = i % this.mapWidth;
                     const layer = layerData[i];
                     let img = this.tilesData[layer];
                     if (!img) {
@@ -102,12 +105,11 @@ class Zone extends React.Component {
                         <Tile
                             tileHeight={this.tileHeight}
                             tileWidth={this.tileWidth}
-                            id={"layer" + l + "_row" + i + "_tile" + i}
-                            key={"layer" + l + "_row" + i + "_tileKey" + i}>
+                            id={"layer" + l + "_row" + index + "_tile" + column}
+                            key={"layerKey" + l + "_rowKey" + index + "_tileKey" + column}>
                             {img}
                         </Tile>
 
-                    const index = Math.floor(i / this.mapWidth); // Round down to the row's number using the width
                     if (typeof rows[index] === "undefined") {
                         rows[index] = [ tile ];
                     } else {
@@ -118,20 +120,31 @@ class Zone extends React.Component {
             }
         }
 
+        // get the player's starting point using the tile coordinates
+        const r = this.level.playerStartingPoint.row;
+        const col = this.level.playerStartingPoint.column;
+        const startingCoordinates = {
+            x: this.tileWidth * col,
+            y: this.tileHeight * r
+        };
+
         return (
             <div className="zone-container" style={{width: ZONE_WIDTH, height: ZONE_HEIGHT}}>
                 {/* <DialogBox messages={this.state.currentLevel.messages} messageTitle={this.state.currentLevel.messageTitle} /> */}
-                {/*<Player skin="m1" />*/}
+                <Player skin="m1" startingPoint={startingCoordinates} />
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
-                    height: this.mapHeight * this.tileHeight
+                    height: this.mapHeight * this.tileHeight,
+                    zIndex: 0
                 }}>
-                    {layers.map((layer) => {
+                    {layers.map((layer, layerIndex) => {
                         return (
-                            <div style={{ position: "absolute" }}>
-                                {layer.map((rows) => {
+                            <div id={"layer" + layerIndex} key={"layerKey" + layerIndex} style={{ position: "absolute" }}>
+                                {layer.map((rows, index) => {
                                     return (
-                                        <div style={{height: this.tileHeight}}>
+                                        <div id={"layer" + layerIndex + "_row" + index}
+                                             key={"layerKey" + layerIndex + "_rowKey" + index}
+                                             style={{height: this.tileHeight}}>
                                             {rows}
                                         </div>
                                     )
@@ -143,19 +156,6 @@ class Zone extends React.Component {
             </div>
         );
     }
-}
-
-const _mergeArrays = (arrays) => {
-    // Assume all arrays same size
-    const combined = new Array(arrays[0].length).fill(0, 0, arrays[0].length);
-    arrays.forEach((arr) => {
-        arr.forEach((value, i) => {
-            if (value !== 0) {
-                combined[i] = value;
-            }
-        });
-    });
-    return combined;
 }
 
 export default Zone;

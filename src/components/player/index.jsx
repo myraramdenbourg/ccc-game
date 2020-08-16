@@ -3,8 +3,9 @@ import Actor from "../actor";
 import PressKey from "../../hooks/press-key";
 import WalkPlayer from "../../hooks/walk-player"
 
-export default function Player({ skin }) {
-    const { dir, step, walk, position, action } = WalkPlayer(3);
+export default function Player(props) {
+
+    const { dir, step, walk, position, action } = WalkPlayer(3, props.startingPoint);
     const data = {
         h: 32,
         w: 32,
@@ -37,6 +38,6 @@ export default function Player({ skin }) {
         }
     });
 
-    return <Actor sprite={`./assets/${skin}.png`} data={data} step={step} dir={dir} position={position} />;
+    return <Actor sprite={`./assets/${props.skin}.png`} data={data} step={step} dir={dir} position={position} />;
 
 }
