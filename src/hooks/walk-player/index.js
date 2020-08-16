@@ -1,21 +1,19 @@
-import { useState } from 'react';
-import level1 from '../../levels/level1';
+import { useState } from "react";
+import level1 from "../../components/levels";
 
-export default function useWalk(maxSteps) {
+export default function WalkPlayer(maxSteps) {
+
     const [position, setPosition] = useState({ x: 0, y: 0 });
-    // check direction the character is facing, default is facing down. dir is a getter, setDir is a setter
     const [dir, setDir] = useState(0);
-    // keep track of animation steps
-    const [step, setStep] = useState(0);
+    const stepSize = 16;
     const directions = {
         down: 0,
         left: 1,
         right: 2,
         up: 3
     };
-
-    const stepSize = 16;
-
+    // keep track of animation steps
+    const [step, setStep] = useState(0);
     const modifier = {
         down: { x: 0, y: stepSize },
         left: { x: -stepSize, y: 0 },
@@ -23,12 +21,10 @@ export default function useWalk(maxSteps) {
         up: { x: 0, y: -stepSize },
     };
 
-
     function walk(dir) {
         setDir(prev => {
             if (directions[dir] === prev) {
                 move(dir);
-                // action(dir);
             }
             return directions[dir];
         });
@@ -51,7 +47,7 @@ export default function useWalk(maxSteps) {
         //     }));
 
         switch (level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]) {
-            case 5: // wall: don't move
+            case 5: // wall: don"t move
                 setPosition(prev => ({
                     x: prev.x,
                     y: prev.y
@@ -61,14 +57,14 @@ export default function useWalk(maxSteps) {
                     x: prev.x + modifier[dir].x,
                     y: prev.y + modifier[dir].y,
                 }));
-            // case 20: // object: don't move and trigger action
+            // case 20: // object: don"t move and trigger action
             //     setPosition(prev => ({
             //         x: prev.x,
             //         y: prev.y
             //     }));
             //     talkAction();
             default:
-                console.log('error ');
+                console.log("error ");
         };
     }
 

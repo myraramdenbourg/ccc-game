@@ -1,8 +1,6 @@
-// code rom https://codeworkshop.dev/blog/2020-03-01-creating-an-rpg-dialog-effect-with-react-and-react-spring/
-
+// code from https://codeworkshop.dev/blog/2020-03-01-creating-an-rpg-dialog-effect-with-react-and-react-spring/
 import React, { useState } from "react";
-import Message from "./Message.js";
-import styles from '../../css/styles.css';
+import Message from "./message.js";
 
 const DialogBox = ({ messages, messageTitle }) => {
     const [currentMessage, setCurrentMessage] = useState(0);

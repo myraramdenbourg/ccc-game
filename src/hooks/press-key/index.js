@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 
-
 // react hooks
-export default function useKeyPress(fn) {
+export default function PressKey(fn) {
     useEffect(() => {
         window.addEventListener("keydown", fn)
         return () => window.removeEventListener("keydown", fn);
