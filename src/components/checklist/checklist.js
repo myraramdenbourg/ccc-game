@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "../../css/styles.css";
 
 const CheckList = ({ image }) => {
 
     return (
-        <div className="CheckList" id="CheckList">
-            <img src={"./assets/puzzles/" + image + ".png"} alt="checklist" />
+        <div id="CheckList">
+            <img className="CheckList" src={"./assets/puzzles/" + image + ".png"} alt="checklist" />
         </div>
     );
 };

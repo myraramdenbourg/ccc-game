@@ -1,4 +1,4 @@
-import level3 from "../level3";
+import level8 from "../level8";
 import levelData from "./data/level.json";
 import tilesetData from "./data/tileset.json";
 import townPng from "./data/town.png";
@@ -13,7 +13,7 @@ const sources = {
     }
 }
 
-const title = "Level 2 - The Transcript";
+const title = "Level 7 - Turning in the Application";
 
 const characters = [
     {
@@ -66,9 +66,9 @@ const StartingMessages = [
     },
 ];
 
-const checklist = "checklist";
+const checklist = "checklist6";
 
-const next = level3;
+const next = level8;
 
 export default {
     sources,

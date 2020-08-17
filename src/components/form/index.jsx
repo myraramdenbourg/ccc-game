@@ -10,9 +10,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-export default function FormDialog() {
+export default function FormDialog({ }) {
 
-    const answer = "hello";
+    const answer = "college";
+
+    // const [currentLevel, setCurrentLevel] = React.useState(currentLevel);
 
     const [input, setInput] = React.useState('');
 
@@ -28,9 +30,10 @@ export default function FormDialog() {
 
     const handleSubmit = () => {
         setOpen(false);
+        console.log(answer);
         if (input == answer.toLowerCase()) {
             // go to next level
-            this.setState({ currentLevel: this.state.currentLevel.next })
+            // setCurrentLevel(currentLevel.next);
         } else {
             // incorrect!
         }
@@ -40,7 +43,7 @@ export default function FormDialog() {
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                 Open form dialog
-      </Button>
+            </Button>
             <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Enter Answer</DialogTitle>
                 <DialogContent>
