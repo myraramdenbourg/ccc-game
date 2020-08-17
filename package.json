@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "json-loader": "^0.5.7",
     "react": "^16.13.1",
+    "react-css-spinners": "^4.0.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",

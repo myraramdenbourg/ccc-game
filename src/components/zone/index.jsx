@@ -4,7 +4,7 @@ import Player from "../player";
 import DialogBox from "../dialog";
 import Tile from "../tile";
 import { Button } from "@material-ui/core";
-
+import { DualRing } from "react-css-spinners";
 
 const ZONE_WIDTH = 800
 const ZONE_HEIGHT = 600;
@@ -88,9 +88,17 @@ class Zone extends React.Component {
         this.totalImages = tileSets.length;
     }
 
+    fullyLoaded = () => {
+        return this.state.numImagesLoaded >= this.totalImages;
+    }
+
     render() {
         const layers = new Array(this.tiles.length);
-        if (this.state.numImagesLoaded >= this.totalImages) {
+        let player = null;
+        let dialog = null;
+
+        if (this.fullyLoaded()) {
+            // Create the tile formats
             console.log("Tiles from all sources loaded");
             for (let l = 0; l < this.tiles.length; l++) {
                 const layerData = this.tiles[l].data;
@@ -121,26 +129,39 @@ class Zone extends React.Component {
                 }
                 layers[l] = rows;
             }
+
+            // get the player's starting point using the tile coordinates
+            const r = this.level.playerStartingPoint.row;
+            const col = this.level.playerStartingPoint.column;
+            const startingCoordinates = {
+                x: this.tileWidth * col,
+                y: this.tileHeight * r
+            };
+            player = <Player skin="m1"
+                startingPoint={startingCoordinates}
+                tiles={this.tiles}
+                tileDimensions={{
+                    width: this.tileWidth,
+                    height: this.tileHeight
+                }}
+                visibility={this.fullyLoaded()} />;
+
+            dialog = <DialogBox visibility={this.fullyLoaded()} messages={this.level.StartingMessages} />;
         }
 
-        // get the player's starting point using the tile coordinates
-        const r = this.level.playerStartingPoint.row;
-        const col = this.level.playerStartingPoint.column;
-        const startingCoordinates = {
-            x: this.tileWidth * col,
-            y: this.tileHeight * r
-        };
 
         return (
             <div className="zone-container" style={{ width: ZONE_WIDTH, height: ZONE_HEIGHT }}>
-                <DialogBox messages={this.level.StartingMessages} />
-                <Player skin="m1"
-                    startingPoint={startingCoordinates}
-                    tiles={this.tiles}
-                    tileDimensions={{
-                        width: this.tileWidth,
-                        height: this.tileHeight
+                {!this.fullyLoaded() ? (
+                    <DualRing style={{
+                        top: "50%",
+                        left: "50%",
+                        position: "absolute",
+                        transform: "translate(-50%,-50%)"
                     }} />
+                ) : null}
+                {dialog}
+                {player}
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
                     height: this.mapHeight * this.tileHeight,
