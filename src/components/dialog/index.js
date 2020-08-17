@@ -8,16 +8,17 @@ const DialogBox = ({ messages, messageTitle }) => {
         if (currentMessage < messages.length - 1) {
             setCurrentMessage(currentMessage + 1);
         } else {
-            setCurrentMessage(0);
+            setCurrentMessage(null);
         }
     };
     return (
+        (currentMessage !== null) &&
         <div className="DialogWindow">
             <div className="DialogTitle">{messageTitle}</div>
             <Message message={messages[currentMessage]} key={currentMessage} />
             <div onClick={handleClick} className="DialogFooter">
                 Next
-      </div>
+            </div>
         </div>
     );
 };

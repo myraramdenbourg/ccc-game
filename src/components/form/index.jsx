@@ -9,15 +9,31 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function formDialog() {
+
+export default function FormDialog() {
+
+    const answer = "hello";
+
+    const [input, setInput] = React.useState('');
+
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (e) => {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleCancel = () => {
         setOpen(false);
+    };
+
+    const handleSubmit = () => {
+        setOpen(false);
+        if (input == answer.toLowerCase()) {
+            // go to next level
+            this.setState({ currentLevel: this.state.currentLevel.next })
+        } else {
+            // incorrect!
+        }
     };
 
     return (
@@ -25,7 +41,7 @@ export default function formDialog() {
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                 Open form dialog
       </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Enter Answer</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -36,15 +52,17 @@ export default function formDialog() {
                         margin="dense"
                         id="name"
                         label="Answer"
-                        type="email"
                         fullWidth
+                        type="text"
+                        value={input}
+                        onChange={answer => setInput(answer.target.value)}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleCancel} color="primary">
                         Cancel
           </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleSubmit} color="primary">
                         Submit
           </Button>
                 </DialogActions>

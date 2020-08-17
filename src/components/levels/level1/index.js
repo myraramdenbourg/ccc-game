@@ -54,11 +54,11 @@ const hints = [
 
 const messages = [
   "Huh? Where am I… some kind of dungeon looking place.. maybe I should look around.",
-  "Escape this high school by completing your college application. yaknow, the thing you've been procrastinating on? Good luck!",
-  "Enter hello in the text box to begin"
 ];
 
-const messageTitle = ["Myra"];
+const messageTitle = ["Me"];
+
+const checklist = "/assets/checklist.png";
 
 const next = level2;
 
@@ -72,5 +72,6 @@ export default {
   hints,
   messages,
   messageTitle,
+  checklist,
   next,
 };

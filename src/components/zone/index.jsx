@@ -70,7 +70,7 @@ class Zone extends React.Component {
                         renderCanvas.width = imgData.width;
                         const renderCtx = renderCanvas.getContext("2d");
                         renderCtx.putImageData(imgData, 0, 0);
-                        const tile = <img src={renderCanvas.toDataURL()}/>
+                        const tile = <img src={renderCanvas.toDataURL()} />
                         this.tilesData[idx] = tile;
                         idx++;
                     }
@@ -99,7 +99,7 @@ class Zone extends React.Component {
                     const layer = layerData[i];
                     let img = this.tilesData[layer];
                     if (!img) {
-                        img = <img/>
+                        img = <img />
                     }
                     const tile =
                         <Tile
@@ -111,7 +111,7 @@ class Zone extends React.Component {
                         </Tile>
 
                     if (typeof rows[index] === "undefined") {
-                        rows[index] = [ tile ];
+                        rows[index] = [tile];
                     } else {
                         rows[index].push(tile);
                     }
@@ -129,8 +129,8 @@ class Zone extends React.Component {
         };
 
         return (
-            <div className="zone-container" style={{width: ZONE_WIDTH, height: ZONE_HEIGHT}}>
-                {/* <DialogBox messages={this.state.currentLevel.messages} messageTitle={this.state.currentLevel.messageTitle} /> */}
+            <div className="zone-container" style={{ width: ZONE_WIDTH, height: ZONE_HEIGHT }}>
+                <DialogBox messages={this.level.messages} messageTitle={this.level.messageTitle} />
                 <Player skin="m1" startingPoint={startingCoordinates} />
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
@@ -143,8 +143,8 @@ class Zone extends React.Component {
                                 {layer.map((rows, index) => {
                                     return (
                                         <div id={"layer" + layerIndex + "_row" + index}
-                                             key={"layerKey" + layerIndex + "_rowKey" + index}
-                                             style={{height: this.tileHeight}}>
+                                            key={"layerKey" + layerIndex + "_rowKey" + index}
+                                            style={{ height: this.tileHeight }}>
                                             {rows}
                                         </div>
                                     )

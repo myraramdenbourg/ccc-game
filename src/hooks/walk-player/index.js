@@ -32,40 +32,40 @@ export default function WalkPlayer(maxSteps, startingPoint) {
     };
 
     function move(dir) {
-        console.log(level1.tiles);
-        console.log((position.x + modifier[dir].x) / 16);
-        console.log((position.y + modifier[dir].y) / 16);
-        console.log(level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]);
-        // level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] !== 5 ?
-        //     setPosition(prev => ({
-        //         x: prev.x + modifier[dir].x,
-        //         y: prev.y + modifier[dir].y,
-        //     })) :
+        // console.log(level1.tiles);
+        // console.log((position.x + modifier[dir].x) / 16);
+        // console.log((position.y + modifier[dir].y) / 16);
+        // console.log(level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]);
+        level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] !== 5 ?
+            setPosition(prev => ({
+                x: prev.x + modifier[dir].x,
+                y: prev.y + modifier[dir].y,
+            })) :
+            setPosition(prev => ({
+                x: prev.x,
+                y: prev.y
+            }));
+
+        // switch (level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]) {
+        //     case 5: // wall: don"t move
+        //         setPosition(prev => ({
+        //             x: prev.x,
+        //             y: prev.y
+        //         }));
+        //     case 0: // nothing: move
+        //         setPosition(prev => ({
+        //             x: prev.x + modifier[dir].x,
+        //             y: prev.y + modifier[dir].y,
+        //         }));
+        // case 20: // object: don"t move and trigger action
         //     setPosition(prev => ({
         //         x: prev.x,
         //         y: prev.y
         //     }));
-
-        switch (level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]) {
-            case 5: // wall: don"t move
-                setPosition(prev => ({
-                    x: prev.x,
-                    y: prev.y
-                }));
-            case 0: // nothing: move
-                setPosition(prev => ({
-                    x: prev.x + modifier[dir].x,
-                    y: prev.y + modifier[dir].y,
-                }));
-            // case 20: // object: don"t move and trigger action
-            //     setPosition(prev => ({
-            //         x: prev.x,
-            //         y: prev.y
-            //     }));
-            //     talkAction();
-            default:
-                console.log("error ");
-        };
+        //     talkAction();
+        // default:
+        //     console.log("error ");
+        // };
     }
 
     function action(dir) {

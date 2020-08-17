@@ -34,6 +34,9 @@ h3 {
   border: solid;
   border-image: url(/assets/borderbox.png) 28 / 10px 10px 10px 10px stretch;
   padding: 15px;
+  position: absolute;
+  z-index: 3; 
+  width: 95.5%;
 }
 
 .DialogTitle {
@@ -47,4 +50,13 @@ h3 {
   font-size: 0.9rem;
   margin-top: 15px;
   text-align: end;
+}
+
+img {
+  text-align: left;
+  position: absolute;
+  height: auto; 
+  width: auto; 
+  max-width: 400px; 
+  max-height: 900px;
 }

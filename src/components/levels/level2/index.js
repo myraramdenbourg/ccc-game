@@ -59,6 +59,8 @@ const messages = [
 
 const messageTitle = ["Myra"];
 
+const checklist = "/assets/checklist.png";
+
 const prev = level1;
 
 export default {
@@ -71,5 +73,6 @@ export default {
     hints,
     messages,
     messageTitle,
+    checklist,
     prev,
 };

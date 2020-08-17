@@ -13,23 +13,27 @@ export default function Player(props) {
 
     PressKey((e) => {
         // prevent keyboard from reacting with browser
-        e.preventDefault();
-        // move with "WASD" or Arrow keys
+        // move with 'WASD' or Arrow keys
         switch (e.keyCode) {
             case 37:
-            case 65:
-                return walk("left");
+                // case 65:
+                e.preventDefault();
+                return walk('left');
             case 38:
-            case 87:
-                return walk("up");
+                // case 87:
+                e.preventDefault();
+                return walk('up');
             case 39:
-            case 68:
-                return walk("right");
+                // case 68:
+                e.preventDefault();
+                return walk('right');
             case 40:
-            case 83:
-                return walk("down");
+                // case 83:
+                e.preventDefault();
+                return walk('down');
             case 13:
             case 32:
+                e.preventDefault();
                 // action with enter or space key
                 // TODO: change this so that you can do an action from any direction
                 return action("down");
