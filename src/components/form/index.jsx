@@ -49,7 +49,7 @@ export default function FormDialog({ }) {
                 <DialogContent>
                     <DialogContentText>
                         Write your answer below.
-          </DialogContentText>
+                    </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
@@ -64,10 +64,10 @@ export default function FormDialog({ }) {
                 <DialogActions>
                     <Button onClick={handleCancel} color="primary">
                         Cancel
-          </Button>
+                    </Button>
                     <Button onClick={handleSubmit} color="primary">
                         Submit
-          </Button>
+                    </Button>
                 </DialogActions>
             </Dialog>
         </div>

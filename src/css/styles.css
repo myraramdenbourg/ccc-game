@@ -52,7 +52,7 @@ h3 {
   text-align: end;
 }
 
-img {
+.CheckList {
   text-align: left;
   position: absolute;
   height: auto; 
@@ -60,5 +60,6 @@ img {
   max-width: 400px; 
   max-height: 900px;
 }
+
 
 

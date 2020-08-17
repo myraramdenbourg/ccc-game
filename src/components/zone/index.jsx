@@ -3,6 +3,8 @@ import styles from "../../css/styles.css";
 import Player from "../player";
 import DialogBox from "../dialog";
 import Tile from "../tile";
+import { Button } from "@material-ui/core";
+
 
 const ZONE_WIDTH = 800
 const ZONE_HEIGHT = 600;
@@ -133,12 +135,12 @@ class Zone extends React.Component {
             <div className="zone-container" style={{ width: ZONE_WIDTH, height: ZONE_HEIGHT }}>
                 <DialogBox messages={this.level.StartingMessages} />
                 <Player skin="m1"
-                        startingPoint={startingCoordinates}
-                        tiles={this.tiles}
-                        tileDimensions={{
-                            width: this.tileWidth,
-                            height: this.tileHeight
-                        }}/>
+                    startingPoint={startingCoordinates}
+                    tiles={this.tiles}
+                    tileDimensions={{
+                        width: this.tileWidth,
+                        height: this.tileHeight
+                    }} />
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
                     height: this.mapHeight * this.tileHeight,

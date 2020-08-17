@@ -19,8 +19,13 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
         width: 600,
-        height: 900
+        height: 850,
     },
+    img: {
+        width: 600,
+        height: 800,
+        alignItems: 'center',
+    }
 }));
 
 export default function PopUp() {
@@ -54,7 +59,7 @@ export default function PopUp() {
             >
                 <Fade in={open}>
                     <div className={classes.paper} >
-                        <img src={require('../levels/level1/puzzles/Level1Puzzle.png')} />
+                        <img className={classes.img} src={require('../levels/level1/puzzles/Level1Puzzle.png')} />
                     </div>
                 </Fade>
             </Modal>
