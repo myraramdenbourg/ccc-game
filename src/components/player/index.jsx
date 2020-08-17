@@ -5,7 +5,7 @@ import WalkPlayer from "../../hooks/walk-player"
 
 export default function Player(props) {
 
-    const { dir, step, walk, position, action } = WalkPlayer(3, props.startingPoint);
+    const { dir, step, walk, position, action } = WalkPlayer(3, props.startingPoint, props.tiles, props.tileDimensions);
     const data = {
         h: 32,
         w: 32,
@@ -13,24 +13,24 @@ export default function Player(props) {
 
     PressKey((e) => {
         // prevent keyboard from reacting with browser
-        // move with 'WASD' or Arrow keys
+        // move with "WASD" or Arrow keys
         switch (e.keyCode) {
             case 37:
                 // case 65:
                 e.preventDefault();
-                return walk('left');
+                return walk("left");
             case 38:
                 // case 87:
                 e.preventDefault();
-                return walk('up');
+                return walk("up");
             case 39:
                 // case 68:
                 e.preventDefault();
-                return walk('right');
+                return walk("right");
             case 40:
                 // case 83:
                 e.preventDefault();
-                return walk('down');
+                return walk("down");
             case 13:
             case 32:
                 e.preventDefault();

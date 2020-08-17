@@ -8,8 +8,7 @@ const Tile = (props) => {
                 height: props.tileHeight,
                 width: props.tileWidth
             }}
-            id={props.id}
-            key={props.key}>
+            id={props.id}>
             {props.children}
         </div>
     );

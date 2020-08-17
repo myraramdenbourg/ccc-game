@@ -61,13 +61,9 @@ const hints = [
 
 const StartingMessages = [
   {
-    messageTitle: "Me",
+    messageTitle: "Me:",
     message: "Huh? Where am I… some kind of dungeon looking place.. maybe I should look around."
   },
-  {
-    messageTitle: "You",
-    message: "Huh?"
-  }
 ];
 
 const checklist = "checklist";

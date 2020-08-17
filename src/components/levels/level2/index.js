@@ -59,7 +59,7 @@ const messages = [
 
 const messageTitle = ["Myra"];
 
-const checklist = "/assets/checklist.png";
+const checklist = "checklist";
 
 const prev = level1;
 

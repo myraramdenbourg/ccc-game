@@ -132,7 +132,13 @@ class Zone extends React.Component {
         return (
             <div className="zone-container" style={{ width: ZONE_WIDTH, height: ZONE_HEIGHT }}>
                 <DialogBox messages={this.level.StartingMessages} />
-                <Player skin="m1" startingPoint={startingCoordinates} />
+                <Player skin="m1"
+                        startingPoint={startingCoordinates}
+                        tiles={this.tiles}
+                        tileDimensions={{
+                            width: this.tileWidth,
+                            height: this.tileHeight
+                        }}/>
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
                     height: this.mapHeight * this.tileHeight,

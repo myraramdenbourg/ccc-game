@@ -1,7 +1,6 @@
 import { useState } from "react";
-import level1 from "../../components/levels";
 
-export default function WalkPlayer(maxSteps, startingPoint) {
+export default function WalkPlayer(maxSteps, startingPoint, tiles, tileDimensions) {
 
     const [position, setPosition] = useState({ x: startingPoint.x, y: startingPoint.y });
     const [dir, setDir] = useState(0);
@@ -21,7 +20,7 @@ export default function WalkPlayer(maxSteps, startingPoint) {
         up: { x: 0, y: -stepSize },
     };
 
-    function walk(dir) {
+    const walk = (dir) => {
         setDir(prev => {
             if (directions[dir] === prev) {
                 move(dir);
@@ -32,46 +31,21 @@ export default function WalkPlayer(maxSteps, startingPoint) {
     };
 
     function move(dir) {
-        // console.log(level1.tiles);
-        // console.log((position.x + modifier[dir].x) / 16);
-        // console.log((position.y + modifier[dir].y) / 16);
-        // console.log(level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]);
-        level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] !== 5 ?
-            setPosition(prev => ({
-                x: prev.x + modifier[dir].x,
-                y: prev.y + modifier[dir].y,
-            })) :
-            setPosition(prev => ({
-                x: prev.x,
-                y: prev.y
-            }));
+        const newPosX = position.x + modifier[dir].x;
+        const newPosY = position.y + modifier[dir].y;
+        const newRow = Math.floor(newPosX / tileDimensions.width); // To the nearest tile
+        const newCol = Math.floor(newPosY / tileDimensions.height); // To the nearest tile
 
-        // switch (level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16]) {
-        //     case 5: // wall: don"t move
-        //         setPosition(prev => ({
-        //             x: prev.x,
-        //             y: prev.y
-        //         }));
-        //     case 0: // nothing: move
-        //         setPosition(prev => ({
-        //             x: prev.x + modifier[dir].x,
-        //             y: prev.y + modifier[dir].y,
-        //         }));
-        // case 20: // object: don"t move and trigger action
-        //     setPosition(prev => ({
-        //         x: prev.x,
-        //         y: prev.y
-        //     }));
-        //     talkAction();
-        // default:
-        //     console.log("error ");
-        // };
+        setPosition(prev => ({
+            x: newPosX,
+            y: newPosY,
+        }));
     }
 
     function action(dir) {
         // if lands next to character, do talkaction
-        level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] == 20 ?
-            talkAction() : observeAction();
+        // level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] == 20 ?
+        //     talkAction() : observeAction();
         // if lands next to object, do observeaction
 
         // if not next to anything, do nothing
@@ -80,10 +54,6 @@ export default function WalkPlayer(maxSteps, startingPoint) {
     function talkAction() {
         // talk action
         console.log("hello friends");
-    }
-
-    function observeAction() {
-
     }
 
     return {
