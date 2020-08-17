@@ -1,10 +1,11 @@
 import { useState } from "react";
+import PressKey from "../press-key";
 
-export default function WalkPlayer(maxSteps, startingPoint, tiles, tileDimensions) {
+export default function WalkPlayer(maxSteps, startingPoint, layers, tileDimensions, mapDimensions) {
 
     const [position, setPosition] = useState({ x: startingPoint.x, y: startingPoint.y });
     const [dir, setDir] = useState(0);
-    const stepSize = 16;
+    const stepSize = tileDimensions.width; // width for now
     const directions = {
         down: 0,
         left: 1,
@@ -33,23 +34,54 @@ export default function WalkPlayer(maxSteps, startingPoint, tiles, tileDimension
     function move(dir) {
         const newPosX = position.x + modifier[dir].x;
         const newPosY = position.y + modifier[dir].y;
-        const newRow = Math.floor(newPosX / tileDimensions.width); // To the nearest tile
-        const newCol = Math.floor(newPosY / tileDimensions.height); // To the nearest tile
+        const newCol = Math.floor(newPosX / tileDimensions.width); // To the nearest tile
+        const newRow = Math.floor(newPosY / tileDimensions.height); // To the nearest tile
+        const newTileIdx = (newRow * mapDimensions.width) + newCol;
 
-        setPosition(prev => ({
-            x: newPosX,
-            y: newPosY,
-        }));
+        const targets = [];
+        layers.forEach((layer) => {
+            const layerData = layer.data;
+            const newTile = layerData[newTileIdx];
+            if (newTile) {
+                console.log("newTile from: " + layer.name);
+                targets.push(layer.name);
+            }
+        })
+
+        // Check for interactions first
+        if (targets.includes("Box Layer")) {
+            action();
+            return;
+        }
+
+        // Then wall check
+        if (targets.includes("Wall")) {
+            return;
+        }
+
+        if (targets.includes("Ground")) {
+            setPosition(prev => ({
+                x: newPosX,
+                y: newPosY,
+            }));
+        }
     }
 
-    function action(dir) {
-        // if lands next to character, do talkaction
-        // level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] == 20 ?
-        //     talkAction() : observeAction();
-        // if lands next to object, do observeaction
-
-        // if not next to anything, do nothing
+    const action = (pressed) => {
+        if (pressed) {
+            console.log("it's a box");
+        }
     }
+
+    // function action() {
+    //     console.log("its a box!");
+    //     // if lands next to character, do talkaction
+    //     // level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] == 20 ?
+    //     //     talkAction() : observeAction();
+    //     // if lands next to object, do observeaction
+
+    //     // if not next to anything, do nothing
+    // }
 
     function talkAction() {
         // talk action

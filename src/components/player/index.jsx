@@ -5,38 +5,35 @@ import WalkPlayer from "../../hooks/walk-player"
 
 export default function Player(props) {
 
-    const { dir, step, walk, position, action } = WalkPlayer(3, props.startingPoint, props.tiles, props.tileDimensions);
+    const { dir, step, walk, position, action } = WalkPlayer(3, props.startingPoint, props.layers, props.tileDimensions, props.mapDimensions);
     const data = {
-        h: 32,
-        w: 32,
+        h: props.playerDimensions.height,
+        w: props.playerDimensions.width,
     };
+
+
 
     PressKey((e) => {
         // prevent keyboard from reacting with browser
         // move with "WASD" or Arrow keys
         switch (e.keyCode) {
             case 37:
-                // case 65:
                 e.preventDefault();
                 return walk("left");
             case 38:
-                // case 87:
                 e.preventDefault();
                 return walk("up");
             case 39:
-                // case 68:
                 e.preventDefault();
                 return walk("right");
             case 40:
-                // case 83:
                 e.preventDefault();
                 return walk("down");
             case 13:
             case 32:
                 e.preventDefault();
                 // action with enter or space key
-                // TODO: change this so that you can do an action from any direction
-                return action("down");
+                return action(true);
             default:
                 console.log("key not mapped: ", e.keyCode);
         }

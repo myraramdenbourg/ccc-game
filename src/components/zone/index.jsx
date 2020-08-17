@@ -11,9 +11,8 @@ const ZONE_HEIGHT = 600;
 
 class Zone extends React.Component {
 
-
     totalImages;
-    tiles;
+    layers;
     tilesData;
     mapHeight;
     mapWidth;
@@ -36,7 +35,7 @@ class Zone extends React.Component {
         this.mapWidth = _map["width"]; // In number of tiles
         this.tileWidth = _map["tilewidth"];
         this.tileHeight = _map["tileheight"];
-        this.tiles = _map["layers"];
+        this.layers = _map["layers"];
 
         this.tilesData = new Array(this.mapWidth * this.mapHeight); // worst case, every tile on the tile is unique
         const tileSets = _map["tilesets"];
@@ -102,15 +101,16 @@ class Zone extends React.Component {
     }
 
     render() {
-        const layers = new Array(this.tiles.length);
+        const layers = new Array(this.layers.length);
         let player = null;
         let dialog = null;
 
         if (this.fullyLoaded()) {
             // Create the tile formats
             console.log("Tiles from all sources loaded");
-            for (let l = 0; l < this.tiles.length; l++) {
-                const layerData = this.tiles[l].data;
+            for (let l = 0; l < this.layers.length; l++) {
+                const layerData = this.layers[l].data;
+                const layerName = this.layers[l].name;
                 // Number of rows is the level's height
                 const rows = new Array(this.mapHeight);
                 for (let i = 0; i < layerData.length; i++) {
@@ -125,8 +125,8 @@ class Zone extends React.Component {
                         <Tile
                             tileHeight={this.tileHeight}
                             tileWidth={this.tileWidth}
-                            id={"layer" + l + "_row" + index + "_tile" + column}
-                            key={"layerKey" + l + "_rowKey" + index + "_tileKey" + column}>
+                            id={layerName + "_row" + index + "_tile" + column}
+                            key={layerName + "_rowKey" + index + "_tileKey" + column}>
                             {img}
                         </Tile>
 
@@ -136,7 +136,10 @@ class Zone extends React.Component {
                         rows[index].push(tile);
                     }
                 }
-                layers[l] = rows;
+                layers[l] = {
+                    name: layerName,
+                    rows: rows
+                };
             }
 
             // get the player's starting point using the tile coordinates
@@ -148,19 +151,26 @@ class Zone extends React.Component {
             };
             player = <Player skin="m1"
                 startingPoint={startingCoordinates}
-                tiles={this.tiles}
+                layers={this.layers}
                 tileDimensions={{
                     width: this.tileWidth,
                     height: this.tileHeight
+                }}
+                mapDimensions={{
+                    width: this.mapWidth,
+                    height: this.mapHeight
+                }}
+                playerDimensions={{
+                    width: 32,
+                    height: 32
                 }}
                 visibility={this.fullyLoaded()} />;
 
             dialog = <DialogBox visibility={this.fullyLoaded()} messages={this.level.StartingMessages} />;
         }
 
-
         return (
-            <div className="zone-container" style={{ width: ZONE_WIDTH, height: ZONE_HEIGHT }}>
+            <div className="zone-container" style={{ width: this.mapWidth * this.tileWidth, height: this.mapHeight * this.tileHeight }}>
                 {!this.fullyLoaded() ? (
                     <DualRing style={{
                         top: "50%",
@@ -178,11 +188,11 @@ class Zone extends React.Component {
                 }}>
                     {layers.map((layer, layerIndex) => {
                         return (
-                            <div id={"layer" + layerIndex} key={"layerKey" + layerIndex} style={{ position: "absolute" }}>
-                                {layer.map((rows, index) => {
+                            <div id={layer.name} key={layer.name} style={{ position: "absolute" }}>
+                                {layer.rows.map((rows, index) => {
                                     return (
-                                        <div id={"layer" + layerIndex + "_row" + index}
-                                            key={"layerKey" + layerIndex + "_rowKey" + index}
+                                        <div id={layer.name + "_row" + index}
+                                            key={layer.name + "_rowKey" + index}
                                             style={{ height: this.tileHeight }}>
                                             {rows}
                                         </div>
