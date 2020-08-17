@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-const CheckList = ({ imageUrl }) => {
+const CheckList = ({ image }) => {
 
     return (
         <div className="CheckList" id="CheckList">
-            <img src={imageUrl} />
+            <img src={"./assets/puzzles/" + image + ".png"} alt="checklist" />
         </div>
     );
 };

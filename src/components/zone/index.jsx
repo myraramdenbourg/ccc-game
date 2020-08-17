@@ -9,6 +9,7 @@ const ZONE_HEIGHT = 600;
 
 class Zone extends React.Component {
 
+
     totalImages;
     tiles;
     tilesData;
@@ -130,7 +131,7 @@ class Zone extends React.Component {
 
         return (
             <div className="zone-container" style={{ width: ZONE_WIDTH, height: ZONE_HEIGHT }}>
-                <DialogBox messages={this.level.messages} messageTitle={this.level.messageTitle} />
+                <DialogBox messages={this.level.StartingMessages} />
                 <Player skin="m1" startingPoint={startingCoordinates} />
                 <div style={{
                     width: this.mapWidth * this.tileWidth,

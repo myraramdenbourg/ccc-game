@@ -1,0 +1,1 @@
+// make the puzzle image show up when an object like a chest is triggered

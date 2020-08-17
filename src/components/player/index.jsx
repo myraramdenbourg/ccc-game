@@ -42,6 +42,6 @@ export default function Player(props) {
         }
     });
 
-    return <Actor sprite={`./assets/${props.skin}.png`} data={data} step={step} dir={dir} position={position} />;
+    return <Actor sprite={`./assets/sprites/${props.skin}.png`} data={data} step={step} dir={dir} position={position} />;
 
 }

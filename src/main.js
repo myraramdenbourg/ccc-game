@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 import Zone from "./components/zone";
 import DialogBox from "./components/dialog";
 import CheckList from "./components/checklist/checklist";
+import HintGiver from "./components/hintGiver/hintGiver";
 
 class Main extends React.Component {
 
@@ -21,22 +22,17 @@ class Main extends React.Component {
             <div>
                 <h1>Escape High School</h1>
                 <h3>{this.state.currentLevel.title}</h3>
-                <CheckList imageUrl={this.state.currentLevel.checklist} />
+                <CheckList image={this.state.currentLevel.checklist} />
                 <Zone level={this.state.currentLevel} />
                 <h3>Arrow keys: Move</h3>
                 <h3>Enter/Space: Interact</h3>
 
                 <center>
-                    <Button variant="outlined" color="primary">
-                        Check answer
-                    </Button>
-                    <Button variant="outlined" color="primary">
-                        Need a hint?
-                    </Button>
                     <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
                         Next level
                     </Button>
                     <FormDialog></FormDialog>
+                    <HintGiver hints={this.state.currentLevel.hints} />
                     {/* <DialogBox messages={this.state.currentLevel.messages} messageTitle={this.state.currentLevel.messageTitle} /> */}
 
                 </center>

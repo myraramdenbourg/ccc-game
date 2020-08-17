@@ -23,17 +23,27 @@ const characters = [
   {
     type: "teacher",
     position: (10, 10),
-    dialogue: [
-      "Hi I'm the teacher",
-      "hihihihi"]
+    dialog: [
+      {
+        messageTitle: "Teacher",
+        message: "Hi I'm teacher"
+      },
+      {
+        messageTitle: "Me",
+        message: "Hi teacher"
+      },
+    ]
   },
   {
     type: "box1",
     position: (15, 15),
-    dialogue: [
-      "this is box1"
+    dialog: [
+      {
+        messageTitle: "Box",
+        message: "Hi I'm box"
+      },
     ],
-    // action: showLetter()
+    // popUp: puzzlePopup("letter") this pops up after the dialogue
   }
 ];
 
@@ -42,23 +52,25 @@ const playerStartingPoint = {
   column: 8 // tile
 }
 
-const puzzle = "puzzle";
-
-const answer = "answer";
+const answer = "college";
 
 const hints = [
-  "Hint 1",
-  "Hint 2",
-  "Hint 3"
+  "Did you observe the chest?",
+  "College is the answer ;)",
 ];
 
-const messages = [
-  "Huh? Where am I… some kind of dungeon looking place.. maybe I should look around.",
+const StartingMessages = [
+  {
+    messageTitle: "Me",
+    message: "Huh? Where am I… some kind of dungeon looking place.. maybe I should look around."
+  },
+  {
+    messageTitle: "You",
+    message: "Huh?"
+  }
 ];
 
-const messageTitle = ["Me"];
-
-const checklist = "/assets/checklist.png";
+const checklist = "checklist";
 
 const next = level2;
 
@@ -67,11 +79,9 @@ export default {
   title,
   characters,
   playerStartingPoint,
-  puzzle,
   answer,
   hints,
-  messages,
-  messageTitle,
+  StartingMessages,
   checklist,
   next,
 };
