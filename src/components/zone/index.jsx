@@ -43,14 +43,15 @@ class Zone extends React.Component {
         for (const ts of tileSets) {
             const first = ts["firstgid"];
             const tsData = sources["tilesets"][ts["source"]];
+            const maxCols = tsData["columns"];
             const imageSrc = tsData["image"];
             const targetImage = sources["images"][tsData["image"]];
             const image = new Image();
-
-            console.log("Loading image %s", imageSrc);
+            console.log("Initialized image %s", imageSrc);
 
             // From https://stackoverflow.com/questions/38156779/how-to-divide-image-in-tiles
             image.onload = () => {
+                console.log("Loading image %s", imageSrc);
                 // create a canvas
                 const canvas = document.createElement("canvas");
                 //set its size to match the image
@@ -61,10 +62,17 @@ class Zone extends React.Component {
                 // draw the image on the canvas
                 ctx.drawImage(image, 0, 0);
                 // get the tile size
+                let col = 0;
                 let idx = first;
                 // for each tile
                 for (let y = 0; y < image.height; y += this.tileHeight) {
                     for (let x = 0; x < image.width; x += this.tileWidth) {
+                        // Do not parse the margins. Only go to the maximum number of columns
+                        if (col === maxCols) {
+                            col = 0;
+                            continue;
+                        }
+
                         // get the pixel data
                         const imgData = ctx.getImageData(x, y, this.tileWidth, this.tileHeight);
 
@@ -76,6 +84,7 @@ class Zone extends React.Component {
                         const tile = <img src={renderCanvas.toDataURL()} />
                         this.tilesData[idx] = tile;
                         idx++;
+                        col++;
                     }
                 }
                 this.setState({

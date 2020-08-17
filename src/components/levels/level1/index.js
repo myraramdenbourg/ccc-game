@@ -1,19 +1,15 @@
 import level2 from "../level2";
-import levelData from "./data/level.json";
-import tilesetData from "./data/tileset.json";
-import chestData from "./data/chest.json";
-import dungeonPng from "./data/dungeon.png";
-import chestPng from "./data/chest.png";
+import levelData from "./data/dungeonGold.json";
+import tilesetData from "./data/dungeonGoldtileset.json";
+import dungeonGoldPng from "./data/dungeonGold.png";
 
 const sources = {
   level: levelData,
   tilesets: {
-    "tileset.json": tilesetData,
-    "chest.json": chestData
+    "dungeonGoldtileset.json": tilesetData
   },
   images: {
-    "dungeon.png": dungeonPng,
-    "chest.png": chestPng
+    "dungeonGold.png": dungeonGoldPng
   }
 }
 
@@ -48,8 +44,8 @@ const characters = [
 ];
 
 const playerStartingPoint = {
-  row: 19, // row
-  column: 8 // tile
+  row: 20, // row
+  column: 5 // tile
 }
 
 const answer = "college";
