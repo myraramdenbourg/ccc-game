@@ -19,54 +19,86 @@ const sources = {
 
 const title = "Level 7 - Turning in the Application";
 
-const characters = [
-    {
-        type: "teacher",
-        position: (10, 10),
-        dialog: [
+const interactions = {
+    "Monster": {
+        "type": "message",
+        "messages": [
             {
-                messageTitle: "Teacher",
-                message: "Hi I'm teacher"
+                "messageTitle": "Collegeboard",
+                "message": "Hello human. I am Collegeboard. I believe you owe me an application."
             },
             {
-                messageTitle: "Me",
-                message: "Hi teacher"
+                "messageTitle": "Me",
+                "message": "Yes I've finished everything!"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Are you sure? You're telling me that you have "
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Your transcript"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Your test scores"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Your letters of recommendation"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Your essays"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Your resume"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "And your application??"
+            },
+            {
+                "messageTitle": "Me",
+                "message": "Yes I do!"
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Great. Then answer one last question for me."
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "..."
+            },
+            {
+                "messageTitle": "Collegeboard",
+                "message": "Who is always here to support you in the application process?"
             },
         ]
     },
-    {
-        type: "box1",
-        position: (15, 15),
-        dialog: [
-            {
-                messageTitle: "Box",
-                message: "Hi I'm box"
-            },
-        ],
-        // popUp: puzzlePopup("letter") this pops up after the dialogue
-    }
-];
+};
 
 const playerStartingPoint = {
     row: 19, // row
     column: 8 // tile
 }
 
-const answer = "college";
+const answer = "ccc";
 
 const hints = [
-    "Did you observe the chest?",
-    "College is the answer ;)",
+    "Talk to the monster, I mean Collegeboard.",
+    "The answer is CCC.",
 ];
 
-const StartingMessages = [
+const startingMessages = [
     {
         messageTitle: "Me:",
-        message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
+        message: "OHMYGOD IT'S A MONSTER!!"
     },
     {
         messageTitle: "Me:",
-        message: "Well, it looks like the first thing I need to do is get a transcript."
+        message: "Oh wait it's just Collegeboard."
     },
 ];
 
@@ -77,11 +109,11 @@ const next = level8;
 export default {
     sources,
     title,
-    characters,
+    interactions,
     playerStartingPoint,
     answer,
     hints,
-    StartingMessages,
+    startingMessages,
     checklist,
     next,
 };

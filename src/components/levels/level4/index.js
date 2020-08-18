@@ -57,11 +57,7 @@ const hints = [
 const startingMessages = [
     {
         messageTitle: "Me:",
-        message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
-    },
-    {
-        messageTitle: "Me:",
-        message: "Well, it looks like the first thing I need to do is get a transcript."
+        message: "I guess this is some kind of forest? Better look around."
     },
 ];
 

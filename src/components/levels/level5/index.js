@@ -15,54 +15,60 @@ const sources = {
 
 const title = "Level 5 - The Evil FAFSA";
 
-const characters = [
-    {
-        type: "teacher",
-        position: (10, 10),
-        dialog: [
+const interactions = {
+    "MoneyDoor": {
+        "type": "message",
+        "messages": [
             {
-                messageTitle: "Teacher",
-                message: "Hi I'm teacher"
+                "messageTitle": "Door",
+                "message": "Behind me is some government dough."
             },
             {
-                messageTitle: "Me",
-                message: "Hi teacher"
+                "messageTitle": "Door",
+                "message": "It's used for college students so they can grow."
+            },
+            {
+                "messageTitle": "Door",
+                "message": "So I better make sure I apply and get paid."
+            },
+            {
+                "messageTitle": "Door",
+                "message": "Where can I find the website for Federal Student Aid?"
             },
         ]
     },
-    {
-        type: "box1",
-        position: (15, 15),
-        dialog: [
+    "Swords": {
+        "type": "image",
+        "messages": [
             {
-                messageTitle: "Box",
-                message: "Hi I'm box"
+                "messageTitle": "Me",
+                "message": "Just some very sharp swords.. "
             },
-        ],
-        // popUp: puzzlePopup("letter") this pops up after the dialogue
-    }
-];
+        ]
+    },
+};
 
 const playerStartingPoint = {
     row: 19, // row
     column: 8 // tile
 }
 
-const answer = "college";
+const answer = "https://studentaid.gov/";
 
 const hints = [
-    "Did you observe the chest?",
-    "College is the answer ;)",
+    "Inspect the door to find a riddle.",
+    "What's the FAFSA website?",
+    "The answer is https://studentaid.gov/",
 ];
 
-const StartingMessages = [
+const startingMessages = [
     {
         messageTitle: "Me:",
-        message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
+        message: "I'm back in the dungeon...but something seems different."
     },
     {
         messageTitle: "Me:",
-        message: "Well, it looks like the first thing I need to do is get a transcript."
+        message: "I smell gold!"
     },
 ];
 
@@ -73,11 +79,11 @@ const next = level6;
 export default {
     sources,
     title,
-    characters,
+    interactions,
     playerStartingPoint,
     answer,
     hints,
-    StartingMessages,
+    startingMessages,
     checklist,
     next,
 };

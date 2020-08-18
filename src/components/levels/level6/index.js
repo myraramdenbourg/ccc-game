@@ -2,6 +2,7 @@ import level7 from "../level7";
 import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
+import essay from "./puzzles/essay.png";
 
 const sources = {
     level: levelData,
@@ -25,14 +26,31 @@ const interactions = {
             },
             {
                 "messageTitle": "Me",
-                "message": "15 left, 5 down"
+                "message": "Essay advice: Show, don't tell."
             },
         ]
     },
-    // "Plant": {
-    //     "type": "image",
-    //     "image": resume
-    // },
+    "Bed": {
+        "type": "message",
+        "messages": [
+            {
+                "messageTitle": "Me",
+                "message": "There's a letter! It says:"
+            },
+            {
+                "messageTitle": "Me",
+                "message": "Essay advice: Make your essay stand out."
+            },
+            {
+                "messageTitle": "Me",
+                "message": "Ooh I know! I could write about my grandma and her favorite food. What was it again?"
+            },
+        ]
+    },
+    "Shelf": {
+        "type": "image",
+        "image": essay
+    },
 };
 
 const playerStartingPoint = {
@@ -40,21 +58,20 @@ const playerStartingPoint = {
     column: 15 // tile
 }
 
-const answer = "college";
+const answer = "kimchi";
 
 const hints = [
     "Did you observe the chest?",
-    "College is the answer ;)",
+    "Did you observe the bookshelf?",
+    "Did you observe the bed?",
+    "My grandma always loved kimchi.",
+    "The answer is kimchi.",
 ];
 
 const startingMessages = [
     {
         messageTitle: "Me:",
-        message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
-    },
-    {
-        messageTitle: "Me:",
-        message: "Well, it looks like the first thing I need to do is get a transcript."
+        message: "This is my bedroom! What could be hiding in here."
     },
 ];
 

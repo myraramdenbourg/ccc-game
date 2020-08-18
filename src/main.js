@@ -15,7 +15,7 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentLevel: Levels.level1
+            currentLevel: Levels.level6
         };
     }
 
@@ -40,9 +40,10 @@ class Main extends React.Component {
                 <h3>Arrow keys: Move</h3>
                 <h3>Enter/Space: Interact</h3>
                 <center>
-                    <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
-                        Next level
-                    </Button>
+                    {this.currentLevel !== Levels.level8 ?
+                        <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
+                            Next level
+                    </Button> : null}
                     <FormDialog handleAnswer={this.handleAnswer} />
                     <HintGiver hints={this.state.currentLevel.hints} />
                 </center>
