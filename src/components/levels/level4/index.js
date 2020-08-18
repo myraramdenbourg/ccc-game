@@ -1,15 +1,19 @@
 import level5 from "../level5";
-import levelData from "./data/level.json";
+import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
-import townPng from "./data/town.png";
+import mapPng from "./data/map.png";
+import chestPng from "./data/chest.png";
+import chestTileset from "./data/chest.json";
 
 const sources = {
     level: levelData,
     tilesets: {
         "tileset.json": tilesetData,
+        "chest.json": chestTileset
     },
     images: {
-        "town.png": townPng,
+        "map.png": mapPng,
+        "chest.png": chestPng
     }
 }
 

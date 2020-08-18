@@ -1,15 +1,15 @@
 import level2 from "../level2";
-import levelData from "./data/dungeonGold.json";
-import tilesetData from "./data/dungeonGoldtileset.json";
-import dungeonGoldPng from "./data/dungeonGold.png";
+import levelData from "./data/map.json";
+import tilesetData from "./data/tileset.json";
+import mapPng from "./data/map.png";
 
 const sources = {
   level: levelData,
   tilesets: {
-    "dungeonGoldtileset.json": tilesetData
+    "tileset.json": tilesetData
   },
   images: {
-    "dungeonGold.png": dungeonGoldPng
+    "map.png": mapPng
   }
 }
 

@@ -1,15 +1,19 @@
 import level8 from "../level8";
-import levelData from "./data/level.json";
+import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
-import townPng from "./data/town.png";
+import mapPng from "./data/map.png";
+import monsterPng from "./data/monster.png";
+import monsterTileset from "./data/monster.json";
 
 const sources = {
     level: levelData,
     tilesets: {
         "tileset.json": tilesetData,
+        "monster.json": monsterTileset
     },
     images: {
-        "town.png": townPng,
+        "map.png": mapPng,
+        "monster.png": monsterPng
     }
 }
 
