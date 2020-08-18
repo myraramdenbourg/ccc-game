@@ -21,7 +21,7 @@ class Main extends React.Component {
 
     handleAnswer = (answer) => {
         console.log(answer);
-        if (answer == this.state.currentLevel.answer) {
+        if (answer === this.state.currentLevel.answer) {
             // go to next level
             this.setState({ currentLevel: this.state.currentLevel.next })
         } else {
@@ -31,24 +31,20 @@ class Main extends React.Component {
 
     render() {
         return (
-
             <div>
-                <Start></Start>
+                <Start />
                 <h1>Escape High School</h1>
                 <h3>{this.state.currentLevel.title}</h3>
                 <CheckList image={this.state.currentLevel.checklist} />
                 <Zone level={this.state.currentLevel} />
                 <h3>Arrow keys: Move</h3>
                 <h3>Enter/Space: Interact</h3>
-
                 <center>
                     <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
                         Next level
                     </Button>
-                    <FormDialog handleAnswer={this.handleAnswer}></FormDialog>
+                    <FormDialog handleAnswer={this.handleAnswer} />
                     <HintGiver hints={this.state.currentLevel.hints} />
-                    {/* <DialogBox messages={this.state.currentLevel.messages} messageTitle={this.state.currentLevel.messageTitle} /> */}
-                    <PopUp></PopUp>
                 </center>
             </div >
         );

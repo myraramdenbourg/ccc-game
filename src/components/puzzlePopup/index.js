@@ -2,12 +2,12 @@
 // modal from https://material-ui.com/components/modal/
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
-const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
     modal: {
         display: 'flex',
         alignItems: 'center',
@@ -26,43 +26,42 @@ const useStyles = makeStyles((theme) => ({
         height: 800,
         alignItems: 'center',
     }
-}));
+});
 
-export default function PopUp() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+class PopUp extends React.Component {
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
+    constructor(props) {
+        super(props);
+    }
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    handleClose = () => {
+        this.props.handleClose();
+    }
 
-    return (
-        <div>
-            <button type="button" onClick={handleOpen}>
-                open puzzle
-      </button>
-            <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className={classes.modal}
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
-            >
-                <Fade in={open}>
-                    <div className={classes.paper} >
-                        <img className={classes.img} src={require('../levels/level1/puzzles/Level1Puzzle.png')} />
-                    </div>
-                </Fade>
-            </Modal>
-        </div >
-    );
+    render() {
+        const { classes } = this.props;
+        return (
+            <div style={this.props.style}>
+                <Modal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    className={classes.modal}
+                    open={this.props.open}
+                    onClose={this.handleClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 500,
+                    }}>
+                    <Fade in={this.props.open}>
+                        <div className={classes.paper}>
+                            <img className={classes.img} src={this.props.image}/>
+                        </div>
+                    </Fade>
+                </Modal>
+            </div>
+        );
+    }
 }
+
+export default withStyles(styles)(PopUp);

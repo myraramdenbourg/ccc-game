@@ -2,6 +2,7 @@ import level2 from "../level2";
 import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
+import puzzlePng from "./puzzles/Level1Puzzle.png";
 
 const sources = {
   level: levelData,
@@ -15,33 +16,30 @@ const sources = {
 
 const title = "Level 1 - The Beginning";
 
-const characters = [
-  {
-    type: "teacher",
-    position: (10, 10),
-    dialog: [
+const interactions = {
+  "Box": {
+    "type": "message",
+    "messages": [
       {
-        messageTitle: "Teacher",
-        message: "Hi I'm teacher"
-      },
-      {
-        messageTitle: "Me",
-        message: "Hi teacher"
-      },
+        "messageTitle": "Me",
+        "message": "You search the boxes...but find nothing."
+      }
     ]
   },
-  {
-    type: "box1",
-    position: (15, 15),
-    dialog: [
+  "Table": {
+    "type": "image",
+    "image": puzzlePng
+  },
+  "Sword": {
+    "type": "message",
+    "messages": [
       {
-        messageTitle: "Box",
-        message: "Hi I'm box"
-      },
-    ],
-    // popUp: puzzlePopup("letter") this pops up after the dialogue
+        "messageTitle": "Me",
+        "message": "You search the swords...but find nothing."
+      }
+    ]
   }
-];
+};
 
 const playerStartingPoint = {
   row: 21, // row
@@ -51,14 +49,15 @@ const playerStartingPoint = {
 const answer = "college";
 
 const hints = [
-  "Did you observe the chest?",
+  "Look around and observe some objects!",
+  "The table on the right looks interesting...",
   "College is the answer ;)",
 ];
 
-const StartingMessages = [
+const startingMessages = [
   {
     messageTitle: "Me:",
-    message: "Huh? Where am I… some kind of dungeon looking place.. maybe I should look around."
+    message: "Huh? Where am I? Some kind of dungeon looking place...I should take a look around."
   },
 ];
 
@@ -68,12 +67,12 @@ const next = level2;
 
 export default {
   sources,
+  interactions,
   title,
-  characters,
   playerStartingPoint,
   answer,
   hints,
-  StartingMessages,
+  startingMessages,
   checklist,
   next,
 };

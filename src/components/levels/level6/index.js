@@ -15,37 +15,29 @@ const sources = {
 
 const title = "Level 6 - The Optional but Not Optional Essay";
 
-const characters = [
-    {
-        type: "teacher",
-        position: (10, 10),
-        dialog: [
+const interactions = {
+    "Chest": {
+        "type": "message",
+        "messages": [
             {
-                messageTitle: "Teacher",
-                message: "Hi I'm teacher"
+                "messageTitle": "Me",
+                "message": "There's a letter! It says:"
             },
             {
-                messageTitle: "Me",
-                message: "Hi teacher"
+                "messageTitle": "Me",
+                "message": "15 left, 5 down"
             },
         ]
     },
-    {
-        type: "box1",
-        position: (15, 15),
-        dialog: [
-            {
-                messageTitle: "Box",
-                message: "Hi I'm box"
-            },
-        ],
-        // popUp: puzzlePopup("letter") this pops up after the dialogue
-    }
-];
+    // "Plant": {
+    //     "type": "image",
+    //     "image": resume
+    // },
+};
 
 const playerStartingPoint = {
     row: 19, // row
-    column: 8 // tile
+    column: 15 // tile
 }
 
 const answer = "college";
@@ -55,7 +47,7 @@ const hints = [
     "College is the answer ;)",
 ];
 
-const StartingMessages = [
+const startingMessages = [
     {
         messageTitle: "Me:",
         message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
@@ -73,11 +65,11 @@ const next = level7;
 export default {
     sources,
     title,
-    characters,
+    interactions,
     playerStartingPoint,
     answer,
     hints,
-    StartingMessages,
+    startingMessages,
     checklist,
     next,
 };

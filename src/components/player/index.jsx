@@ -1,17 +1,21 @@
 import React from "react";
 import Actor from "../actor";
 import PressKey from "../../hooks/press-key";
-import WalkPlayer from "../../hooks/walk-player"
+import HandleKey from "../../hooks/handle-key"
 
 export default function Player(props) {
 
-    const { dir, step, walk, position, action } = WalkPlayer(3, props.startingPoint, props.layers, props.tileDimensions, props.mapDimensions);
+    const { directions, dir, step, walk, position, interact } = HandleKey(
+        3,
+        props.startingPoint,
+        props.layers,
+        props.tileDimensions,
+        props.mapDimensions,
+        props.interactionHandler);
     const data = {
         h: props.playerDimensions.height,
         w: props.playerDimensions.width,
     };
-
-
 
     PressKey((e) => {
         // prevent keyboard from reacting with browser
@@ -19,21 +23,21 @@ export default function Player(props) {
         switch (e.keyCode) {
             case 37:
                 e.preventDefault();
-                return walk("left");
+                return walk(directions.left);
             case 38:
                 e.preventDefault();
-                return walk("up");
+                return walk(directions.up);
             case 39:
                 e.preventDefault();
-                return walk("right");
+                return walk(directions.right);
             case 40:
                 e.preventDefault();
-                return walk("down");
+                return walk(directions.down);
             case 13:
             case 32:
                 e.preventDefault();
                 // action with enter or space key
-                return action(true);
+                return interact();
             default:
                 console.log("key not mapped: ", e.keyCode);
         }

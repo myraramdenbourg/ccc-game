@@ -2,6 +2,7 @@ import level3 from "../level3";
 import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
+import puzzlePng from "./puzzles/stickynote.png"
 
 const sources = {
     level: levelData,
@@ -13,49 +14,40 @@ const sources = {
     }
 }
 
-const title = "Level 2 - The Transcript";
-
-const characters = [
-    {
-        type: "teacher",
-        position: (10, 10),
-        dialog: [
+const interactions = {
+    "Trunk": {
+        "type": "message",
+        "messages": [
             {
-                messageTitle: "Teacher",
-                message: "Hi I'm teacher"
-            },
-            {
-                messageTitle: "Me",
-                message: "Hi teacher"
-            },
+                "messageTitle": "Me",
+                "message": "The tree stump has something engraved in the wood...2009-2010 GPA to nearest tenth"
+            }
         ]
     },
-    {
-        type: "box1",
-        position: (15, 15),
-        dialog: [
-            {
-                messageTitle: "Box",
-                message: "Hi I'm box"
-            },
-        ],
-        // popUp: puzzlePopup("letter") this pops up after the dialogue
-    }
-];
+    "Door": {
+        "type": "image",
+        "image": puzzlePng
+    },
+};
+
+const title = "Level 2 - The Transcript";
 
 const playerStartingPoint = {
     row: 20, // row
-    column: 22 // tile
+    column: 15 // tile
 }
 
-const answer = "college";
+const answer = "3.2";
 
 const hints = [
-    "Did you observe the chest?",
-    "College is the answer ;)",
+    "Try knocking on the counselor's door.",
+    "Look at the note on the bottom right of the transcript.",
+    "Observe the tree stump",
+    "To find overall GPA, take the averages of the GPA's",
+    "The answer is 3.2",
 ];
 
-const StartingMessages = [
+const startingMessages = [
     {
         messageTitle: "Me:",
         message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
@@ -72,12 +64,12 @@ const next = level3;
 
 export default {
     sources,
+    interactions,
     title,
-    characters,
     playerStartingPoint,
     answer,
     hints,
-    StartingMessages,
+    startingMessages,
     checklist,
     next,
 };

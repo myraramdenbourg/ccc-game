@@ -1,27 +1,58 @@
 // code from https://codeworkshop.dev/blog/2020-03-01-creating-an-rpg-dialog-effect-with-react-and-react-spring/
-
-import React, { useState } from "react";
+import React from "react";
 import Message from "./message.js";
 
-const DialogBox = ({ messages }) => {
-    const [currentMessage, setCurrentMessage] = useState(0);
-    const handleClick = () => {
-        if (currentMessage < messages.length - 1) {
-            setCurrentMessage(currentMessage + 1);
-        } else {
-            setCurrentMessage(null);
+class DialogBox extends React.Component {
+
+    messages;
+
+    constructor(props) {
+        super(props);
+        this.messages = props.messages;
+        this.state = {
+            messageIndex: 0
+        };
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.messages !== this.props.messages) {
+            console.log("Message Updated!");
+            this.messages = this.props.messages;
+            this.setState({
+                messageIndex: 0
+            });
         }
-    };
-    return (
-        (currentMessage !== null) &&
-        <div className="DialogWindow">
-            <div className="DialogTitle">{messages[currentMessage].messageTitle}</div>
-            <Message message={messages[currentMessage].message} key={currentMessage} />
-            <div onClick={handleClick} className="DialogFooter">
-                Next
-            </div>
-        </div>
-    );
-};
+    }
+
+    handleClick = () => {
+        let target;
+        if (this.state.messageIndex < this.messages.length - 1) {
+            target = this.state.messageIndex + 1;
+        } else {
+            target = -1; // Message is done
+            this.props.handleClose();
+        }
+        this.setState({
+            messageIndex: target
+        });
+    }
+
+    render() {
+        if (this.messages !== null && this.state.messageIndex !== -1) {
+            const currentMessage = this.messages[this.state.messageIndex];
+            return (
+                <div className="DialogWindow">
+                    <div className="DialogTitle">{currentMessage.messageTitle}</div>
+                    <Message message={currentMessage.message} key={currentMessage} />
+                    <div onClick={this.handleClick} className="DialogFooter">
+                        Next
+                    </div>
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+}
 
 export default DialogBox;

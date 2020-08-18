@@ -4,7 +4,7 @@ import Player from "../player";
 import DialogBox from "../dialog";
 import Tile from "../tile";
 import { DualRing } from "react-css-spinners";
-import Start from "../start/start.js";
+import PopUp from "../puzzlePopup";
 
 class Zone extends React.Component {
 
@@ -15,14 +15,16 @@ class Zone extends React.Component {
     mapWidth;
     tileWidth;
     tileHeight;
-    level
+    level;
 
     constructor(props) {
         super(props);
+        this.level = props.level
         this.state = {
             numImagesLoaded: 0,
+            dialogMessages: this.level.startingMessages,
+            popUpImage: null
         };
-        this.level = props.level
         this.renderImages();
     }
 
@@ -31,7 +33,8 @@ class Zone extends React.Component {
             this.level = this.props.level;
             console.log("Next Level: %s", this.level.title);
             this.setState({
-                numImagesLoaded: 0
+                numImagesLoaded: 0,
+                dialogMessages: this.level.startingMessages,
             });
             console.log("Initializing %s", this.level.title)
             this.renderImages();
@@ -106,10 +109,33 @@ class Zone extends React.Component {
         return this.state.numImagesLoaded >= this.totalImages;
     }
 
+    handleInteraction = (name) => {
+        const interaction = this.level.interactions[name];
+        if (interaction) {
+            console.log(interaction);
+            const interactionType = interaction["type"];
+            if (interactionType === "message") {
+                this.setState({ dialogMessages: interaction["messages"] });
+            } else if (interactionType === "image") {
+                console.log("interaction image");
+                this.setState({ popUpImage: interaction["image"] })
+            }
+        } else {
+            console.log("No interactions found for %s", name);
+        }
+    }
+
     render() {
         const layers = new Array(this.layers.length);
         let player = null;
         let dialog = null;
+        let spinner =
+            <DualRing style={{
+                top: "50%",
+                left: "50%",
+                position: "absolute",
+                transform: "translate(-50%,-50%)"
+            }} />
 
         if (this.fullyLoaded()) {
             // Create the tile formats
@@ -155,39 +181,38 @@ class Zone extends React.Component {
                 x: this.tileWidth * (col - 1),
                 y: this.tileHeight * (r - 1)
             };
-            player = <Player skin="m1"
-                startingPoint={startingCoordinates}
-                layers={this.layers}
-                tileDimensions={{
-                    width: this.tileWidth,
-                    height: this.tileHeight
-                }}
-                mapDimensions={{
-                    width: this.mapWidth,
-                    height: this.mapHeight
-                }}
-                playerDimensions={{
-                    width: 32,
-                    height: 32
-                }}
-                visibility={this.fullyLoaded()} />;
+            player =
+                <Player
+                    skin="m1"
+                    startingPoint={startingCoordinates}
+                    layers={this.layers}
+                    tileDimensions={{
+                        width: this.tileWidth,
+                        height: this.tileHeight
+                    }}
+                    mapDimensions={{
+                        width: this.mapWidth,
+                        height: this.mapHeight
+                    }}
+                    playerDimensions={{
+                        width: 32,
+                        height: 32
+                    }}
+                    interactionHandler={this.handleInteraction} />;
 
-            dialog = <DialogBox visibility={this.fullyLoaded()} messages={this.level.StartingMessages} />;
+            dialog = <DialogBox messages={this.state.dialogMessages} handleClose={() => { this.setState({ dialogMessages: null }) }} />;
+            spinner = null;
         }
 
         return (
             <div className="zone-container" style={{ width: this.mapWidth * this.tileWidth, height: this.mapHeight * this.tileHeight }}>
-                <Start></Start>
-                {!this.fullyLoaded() ? (
-                    <DualRing style={{
-                        top: "50%",
-                        left: "50%",
-                        position: "absolute",
-                        transform: "translate(-50%,-50%)"
-                    }} />
-                ) : null}
+                {spinner}
                 {dialog}
                 {player}
+                <PopUp style={{ position: "absolute" }}
+                    open={this.state.popUpImage !== null}
+                    handleClose={() => { this.setState({ popUpImage: null }) }}
+                    image={this.state.popUpImage} />
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
                     height: this.mapHeight * this.tileHeight,

@@ -4,6 +4,7 @@ import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import chestPng from "./data/chest.png";
 import chestTileset from "./data/chest.json";
+import resume from "./puzzles/resume.png";
 
 const sources = {
     level: levelData,
@@ -19,47 +20,41 @@ const sources = {
 
 const title = "Level 4 - The Resume";
 
-const characters = [
-    {
-        type: "teacher",
-        position: (10, 10),
-        dialog: [
+const interactions = {
+    "Chest": {
+        "type": "message",
+        "messages": [
             {
-                messageTitle: "Teacher",
-                message: "Hi I'm teacher"
+                "messageTitle": "Me",
+                "message": "There's a letter! It says:"
             },
             {
-                messageTitle: "Me",
-                message: "Hi teacher"
+                "messageTitle": "Me",
+                "message": "15 left, 5 down"
             },
         ]
     },
-    {
-        type: "box1",
-        position: (15, 15),
-        dialog: [
-            {
-                messageTitle: "Box",
-                message: "Hi I'm box"
-            },
-        ],
-        // popUp: puzzlePopup("letter") this pops up after the dialogue
-    }
-];
+    "Plant": {
+        "type": "image",
+        "image": resume
+    },
+};
 
 const playerStartingPoint = {
-    row: 19, // row
-    column: 8 // tile
+    row: 15, // row
+    column: 15 // tile
 }
 
-const answer = "college";
+const answer = "315";
 
 const hints = [
     "Did you observe the chest?",
-    "College is the answer ;)",
+    "Check out the second fern!",
+    "Do you see numbers hidden on the resume?",
+    "The answer is 315.",
 ];
 
-const StartingMessages = [
+const startingMessages = [
     {
         messageTitle: "Me:",
         message: "Okay so now I'm outside..wow it's so bright outside. Is that...my counselor's house??"
@@ -77,11 +72,11 @@ const next = level5;
 export default {
     sources,
     title,
-    characters,
+    interactions,
     playerStartingPoint,
     answer,
     hints,
-    StartingMessages,
+    startingMessages,
     checklist,
     next,
 };
