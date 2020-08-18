@@ -72,16 +72,6 @@ export default function WalkPlayer(maxSteps, startingPoint, layers, tileDimensio
         }
     }
 
-    // function action() {
-    //     console.log("its a box!");
-    //     // if lands next to character, do talkaction
-    //     // level1.tiles[(position.x + modifier[dir].x) / 16][(position.y + modifier[dir].y) / 16] == 20 ?
-    //     //     talkAction() : observeAction();
-    //     // if lands next to object, do observeaction
-
-    //     // if not next to anything, do nothing
-    // }
-
     function talkAction() {
         // talk action
         console.log("hello friends");

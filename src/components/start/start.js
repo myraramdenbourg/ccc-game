@@ -28,19 +28,12 @@ export default function Start() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
     const handleClose = () => {
         setOpen(false);
     };
 
     return (
         <div>
-            {/* <button type="button" onClick={handleOpen}>
-                open puzzle
-      </button> */}
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
