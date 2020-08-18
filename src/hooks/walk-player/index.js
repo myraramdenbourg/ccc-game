@@ -33,8 +33,9 @@ export default function WalkPlayer(maxSteps, startingPoint, layers, tileDimensio
     function move(dir) {
         const newPosX = position.x + modifier[dir].x;
         const newPosY = position.y + modifier[dir].y;
-        const newCol = Math.floor(newPosX / tileDimensions.width); // To the nearest tile
-        const newRow = Math.floor(newPosY / tileDimensions.height); // To the nearest tile
+        // X-Y coordinate plane starts from the top left. Add 1 so the new position starts at the beginning of the tile
+        const newCol = Math.floor(newPosX / tileDimensions.width) + 1;
+        const newRow = Math.floor(newPosY / tileDimensions.height) + 1;
         const newTileIdx = (newRow * mapDimensions.width) + newCol;
 
         const targets = [];
@@ -42,7 +43,7 @@ export default function WalkPlayer(maxSteps, startingPoint, layers, tileDimensio
             const layerData = layer.data;
             const newTile = layerData[newTileIdx];
             if (newTile) {
-                console.log("newTile from: " + layer.name);
+                console.log("row" + newRow + " col" + newCol + " newTile from: " + layer.name);
                 targets.push(layer.name);
             }
         })

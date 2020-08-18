@@ -44,7 +44,7 @@ const characters = [
 ];
 
 const playerStartingPoint = {
-  row: 20, // row
+  row: 21, // row
   column: 5 // tile
 }
 

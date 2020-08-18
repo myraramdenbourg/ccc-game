@@ -44,8 +44,8 @@ const characters = [
 ];
 
 const playerStartingPoint = {
-    row: 19, // row
-    column: 8 // tile
+    row: 20, // row
+    column: 22 // tile
 }
 
 const answer = "college";
