@@ -8,6 +8,7 @@ import DialogBox from "./components/dialog";
 import CheckList from "./components/checklist/checklist";
 import HintGiver from "./components/hintGiver/hintGiver";
 import PopUp from "./components/puzzlePopup";
+import Start from "./components/start/start.js";
 
 class Main extends React.Component {
 
@@ -18,11 +19,21 @@ class Main extends React.Component {
         };
     }
 
+    handleAnswer = (answer) => {
+        console.log(answer);
+        if (answer == this.state.currentLevel.answer) {
+            // go to next level
+            this.setState({ currentLevel: this.state.currentLevel.next })
+        } else {
+            // incorrect!
+        }
+    };
+
     render() {
         return (
 
             <div>
-
+                <Start></Start>
                 <h1>Escape High School</h1>
                 <h3>{this.state.currentLevel.title}</h3>
                 <CheckList image={this.state.currentLevel.checklist} />
@@ -34,12 +45,12 @@ class Main extends React.Component {
                     <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
                         Next level
                     </Button>
-                    <FormDialog currentLevel={this.state.currentLevel}></FormDialog>
+                    <FormDialog handleAnswer={this.handleAnswer}></FormDialog>
                     <HintGiver hints={this.state.currentLevel.hints} />
                     {/* <DialogBox messages={this.state.currentLevel.messages} messageTitle={this.state.currentLevel.messageTitle} /> */}
                     <PopUp></PopUp>
                 </center>
-            </div>
+            </div >
         );
     }
 }

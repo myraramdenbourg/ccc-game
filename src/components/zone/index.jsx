@@ -5,6 +5,8 @@ import DialogBox from "../dialog";
 import Tile from "../tile";
 import { Button } from "@material-ui/core";
 import { DualRing } from "react-css-spinners";
+import Start from "../start/start.js";
+
 
 const ZONE_WIDTH = 800
 const ZONE_HEIGHT = 600;
@@ -171,6 +173,7 @@ class Zone extends React.Component {
 
         return (
             <div className="zone-container" style={{ width: this.mapWidth * this.tileWidth, height: this.mapHeight * this.tileHeight }}>
+                <Start></Start>
                 {!this.fullyLoaded() ? (
                     <DualRing style={{
                         top: "50%",

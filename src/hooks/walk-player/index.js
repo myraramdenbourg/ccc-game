@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PressKey from "../press-key";
 
 export default function WalkPlayer(maxSteps, startingPoint, layers, tileDimensions, mapDimensions) {
 

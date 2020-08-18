@@ -4865,7 +4865,7 @@
        "tilesets": [
               {
                      "firstgid": 1,
-                     "source": "town.json"
+                     "source": "town.png"
               }
        ],
        "tilewidth": 16,

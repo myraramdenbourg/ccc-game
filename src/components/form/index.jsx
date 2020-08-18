@@ -10,11 +10,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-export default function FormDialog({ }) {
+export default function FormDialog(props) {
 
     const answer = "college";
-
-    // const [currentLevel, setCurrentLevel] = React.useState(currentLevel);
 
     const [input, setInput] = React.useState('');
 
@@ -29,15 +27,9 @@ export default function FormDialog({ }) {
     };
 
     const handleSubmit = () => {
+        props.handleAnswer(input);
         setOpen(false);
-        console.log(answer);
-        if (input == answer.toLowerCase()) {
-            // go to next level
-            // setCurrentLevel(currentLevel.next);
-        } else {
-            // incorrect!
-        }
-    };
+    }
 
     return (
         <div>
