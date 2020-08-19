@@ -16,17 +16,24 @@ class Main extends React.Component {
         super(props);
         this.state = {
             currentLevel: Levels.level1,
+            isPlaying: true,
         };
     }
 
     handleAnswer = (answer) => {
-        if (answer === this.state.currentLevel.answer) {
+        if (answer.toLowerCase() === this.state.currentLevel.answer.toLowerCase()) {
             // go to next level
             this.setState({ currentLevel: this.state.currentLevel.next })
         } else {
             alert('Incorrect!');
         }
     };
+
+    handlePlay = () => {
+        this.state.isPlaying ?
+            this.setState({ isPlaying: false }) :
+            this.setState({ isPlaying: true })
+    }
 
     render() {
         return (
@@ -71,20 +78,20 @@ class Main extends React.Component {
                 <h3>Enter/Space: Interact</h3>
                 <center>
                     {this.state.currentLevel.title !== "Level 8 - The End" ?
-                        <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
-                            Next level
-                    </Button> : null}
-                    <FormDialog handleAnswer={this.handleAnswer} />
-                    <HintGiver hints={this.state.currentLevel.hints} />
+                        //     <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
+                        //         Next level
+                        // </Button> 
+                        <FormDialog handleAnswer={this.handleAnswer} /> : null}
 
+                    <HintGiver hints={this.state.currentLevel.hints} />
+                    <Button onClick={this.handlePlay} variant="outlined" color="primary">
+                        {this.state.isPlaying ? "Turn music off" : "Turn music on"}
+                    </Button>
                     <Sound
                         url={this.state.currentLevel.music}
-                        playStatus={Sound.status.PLAYING}
-                        playFromPosition={300 /* in milliseconds */}
-                        onLoading={this.handleSongLoading}
-                        onPlaying={this.handleSongPlaying}
-                        onFinishedPlaying={this.handleSongFinishedPlaying}
+                        playStatus={this.state.isPlaying ? Sound.status.PLAYING : null}
                         loop={true}
+                        volume={25}
                     />
                 </center>
             </div >

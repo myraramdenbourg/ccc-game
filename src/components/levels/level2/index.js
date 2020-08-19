@@ -44,6 +44,7 @@ const answer = "3.2";
 
 const hints = [
     "Try knocking on the counselor's door.",
+    "Email jentherealcounselor@gmail.com and ask her for a transcript.",
     "Look at the note on the bottom right of the transcript.",
     "Observe the tree stump",
     "To find overall GPA, take the averages of the GPA's",

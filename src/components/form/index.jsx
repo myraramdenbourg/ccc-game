@@ -12,8 +12,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function FormDialog(props) {
 
-    const answer = "college";
-
     const [input, setInput] = React.useState('');
 
     const [open, setOpen] = React.useState(false);
@@ -34,7 +32,7 @@ export default function FormDialog(props) {
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Open form dialog
+                Next Level
             </Button>
             <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Enter Answer</DialogTitle>

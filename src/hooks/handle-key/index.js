@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Sound from 'react-sound';
+import Walking from '../../music/walking.mp3';
 
 export default function HandleKey(maxSteps, startingPoint, layers, tileDimensions, mapDimensions, interactionHandler) {
 
