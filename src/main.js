@@ -9,13 +9,14 @@ import CheckList from "./components/checklist/checklist";
 import HintGiver from "./components/hintGiver/hintGiver";
 import PopUp from "./components/puzzlePopup";
 import Start from "./components/start/start.js";
+import Timer from 'react-compound-timer'
 
 class Main extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            currentLevel: Levels.level6
+            currentLevel: Levels.level1
         };
     }
 
@@ -25,7 +26,7 @@ class Main extends React.Component {
             // go to next level
             this.setState({ currentLevel: this.state.currentLevel.next })
         } else {
-            // incorrect!
+            alert('Incorrect!');
         }
     };
 
@@ -34,6 +35,37 @@ class Main extends React.Component {
             <div>
                 <Start />
                 <h1>Escape High School</h1>
+
+                <center style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Timer
+                        initialTime={60 * 1000 * 60}
+                        direction="backward"
+                        timeToUpdate={10}
+                        checkpoints={[
+                            {
+                                time: 0,
+                                callback: () => alert('Time is up!'),
+                            },
+                            {
+                                time: 60 * 1000 * 30,
+                                callback: () => alert('30 minutes left!'),
+                            },
+                        ]}
+                    >
+                        {() => (
+                            <div>
+                                <Timer.Minutes /> minutes
+                                <Timer.Seconds /> seconds
+                            </div>
+                        )}
+                        <h2 style={{ fontFamily: 'Helvetica Neue' }}>
+                            <h2 style={{ fontSize: 32, color: "white" }}>
+                                <Timer.Minutes />:<Timer.Seconds />
+                            </h2>
+                        </h2>
+                    </Timer>
+                </center>
+
                 <h3>{this.state.currentLevel.title}</h3>
                 <CheckList image={this.state.currentLevel.checklist} />
                 <Zone level={this.state.currentLevel} />
@@ -46,6 +78,7 @@ class Main extends React.Component {
                     </Button> : null}
                     <FormDialog handleAnswer={this.handleAnswer} />
                     <HintGiver hints={this.state.currentLevel.hints} />
+
                 </center>
             </div >
         );
