@@ -58,8 +58,9 @@ h3 {
   position: absolute;
   height: auto; 
   width: auto; 
-  max-width: 400px; 
-  max-height: 900px;
+  max-width: 300px; 
+  max-height: 800px;
+  margin-left: 15px
 }
 
 

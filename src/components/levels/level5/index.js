@@ -41,7 +41,7 @@ const interactions = {
         ]
     },
     "Swords": {
-        "type": "image",
+        "type": "message",
         "messages": [
             {
                 "messageTitle": "Me",
@@ -67,12 +67,12 @@ const hints = [
 const startingMessages = [
     {
         messageTitle: "Me:",
-        message: "I'm back in the dungeon...but something seems different."
+        message: "I'm back in the dungeon...but something seems different..I smell gold!"
     },
-    {
-        messageTitle: "Me:",
-        message: "I smell gold!"
-    },
+    // {
+    //     messageTitle: "Me:",
+    //     message: "I smell gold!"
+    // },
 ];
 
 const checklist = "checklist4";

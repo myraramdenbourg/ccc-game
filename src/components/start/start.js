@@ -52,6 +52,7 @@ export default function Start() {
                         <h4 id="transition-modal-description">Rules: </h4>
                         <p id="transition-modal-description">- Use the arrow keys to move around. </p>
                         <p id="transition-modal-description">- Use the spacebar or enter key to interact with objects.</p>
+                        <p id="transition-modal-description">- When you think you have an answer, click NEXT LEVEL.</p>
                         <p id="transition-modal-description">- Do not hit the reset button or all your progress will be lost.</p>
                         <p id="transition-modal-description">Have fun! Your timer starts NOW!</p>
 

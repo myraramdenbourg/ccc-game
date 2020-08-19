@@ -52,7 +52,8 @@ const answer = "315";
 
 const hints = [
     "Did you observe the chest?",
-    "Check out the second fern!",
+    "Starting from the left side of the chest, take 15 steps to the left and 5 steps down",
+    "Check out the third fern!",
     "Do you see numbers hidden on the resume?",
     "The answer is 315.",
 ];
