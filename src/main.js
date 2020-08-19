@@ -84,6 +84,7 @@ class Main extends React.Component {
                         onLoading={this.handleSongLoading}
                         onPlaying={this.handleSongPlaying}
                         onFinishedPlaying={this.handleSongFinishedPlaying}
+                        loop={true}
                     />
                 </center>
             </div >

@@ -3,7 +3,7 @@ import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import essay from "./puzzles/essay.png";
-import Dungeon from '../../../music/dungeon.mp3';
+import Room from '../../../music/room.mp3';
 
 const sources = {
     level: levelData,
@@ -17,7 +17,7 @@ const sources = {
 
 const title = "Level 6 - The Optional but Not Optional Essay";
 
-const music = Dungeon;
+const music = Room;
 
 const interactions = {
     "Chest": {

@@ -53,7 +53,7 @@ export default function Start() {
                         <p id="transition-modal-description">- Use the arrow keys to move around. </p>
                         <p id="transition-modal-description">- Use the spacebar or enter key to interact with objects.</p>
                         <p id="transition-modal-description">- Do not hit the reset button or all your progress will be lost.</p>
-                        <p id="transition-modal-description">Have fun!</p>
+                        <p id="transition-modal-description">Have fun! Your timer starts NOW!</p>
 
                     </div>
                 </Fade>

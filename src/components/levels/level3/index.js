@@ -3,7 +3,7 @@ import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import puzzle from "./puzzles/decoration.png";
-import Dungeon from '../../../music/dungeon.mp3';
+import Teacher from '../../../music/teacher.mp3';
 
 const sources = {
     level: levelData,
@@ -17,7 +17,7 @@ const sources = {
 
 const title = "Level 3 - The Letter of Recommendation";
 
-const music = Dungeon;
+const music = Teacher;
 
 const interactions = {
     "Teacher": {

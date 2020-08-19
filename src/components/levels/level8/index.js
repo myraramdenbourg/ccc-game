@@ -3,7 +3,7 @@ import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import letter from "./puzzles/finalletter.png";
-import Dungeon from '../../../music/dungeon.mp3';
+import End from '../../../music/end.mp3';
 
 const sources = {
     level: levelData,
@@ -17,7 +17,7 @@ const sources = {
 
 const title = "Level 8 - The End";
 
-const music = Dungeon;
+const music = End;
 
 const interactions = {
     "Sink": {

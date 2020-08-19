@@ -5,7 +5,7 @@ import mapPng from "./data/map.png";
 import chestPng from "./data/chest.png";
 import chestTileset from "./data/chest.json";
 import resume from "./puzzles/resume.png";
-import Dungeon from '../../../music/dungeon.mp3';
+import Forest from '../../../music/forest.mp3';
 
 const sources = {
     level: levelData,
@@ -21,7 +21,7 @@ const sources = {
 
 const title = "Level 4 - The Resume";
 
-const music = Dungeon;
+const music = Forest;
 
 const interactions = {
     "Chest": {

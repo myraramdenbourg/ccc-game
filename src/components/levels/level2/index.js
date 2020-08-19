@@ -3,7 +3,7 @@ import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import puzzlePng from "./puzzles/stickynote.png"
-import Dungeon from '../../../music/dungeon.mp3';
+import Village from '../../../music/village.mp3';
 
 const sources = {
     level: levelData,
@@ -15,7 +15,7 @@ const sources = {
     }
 }
 
-const music = Dungeon;
+const music = Village;
 
 const interactions = {
     "Trunk": {
