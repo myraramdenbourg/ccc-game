@@ -16,7 +16,7 @@ class Main extends React.Component {
         super(props);
         this.state = {
             currentLevel: Levels.level1,
-            isPlaying: true,
+            isPlaying: false,
         };
     }
 
