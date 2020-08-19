@@ -4,24 +4,22 @@ import Levels from "./components/levels";
 import FormDialog from "./components/form"
 import { Button } from "@material-ui/core";
 import Zone from "./components/zone";
-import DialogBox from "./components/dialog";
 import CheckList from "./components/checklist/checklist";
 import HintGiver from "./components/hintGiver/hintGiver";
-import PopUp from "./components/puzzlePopup";
 import Start from "./components/start/start.js";
 import Timer from 'react-compound-timer'
+import Sound from 'react-sound';
 
 class Main extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            currentLevel: Levels.level1
+            currentLevel: Levels.level1,
         };
     }
 
     handleAnswer = (answer) => {
-        console.log(answer);
         if (answer === this.state.currentLevel.answer) {
             // go to next level
             this.setState({ currentLevel: this.state.currentLevel.next })
@@ -72,13 +70,21 @@ class Main extends React.Component {
                 <h3>Arrow keys: Move</h3>
                 <h3>Enter/Space: Interact</h3>
                 <center>
-                    {this.currentLevel !== Levels.level8 ?
+                    {this.state.currentLevel.title !== "Level 8 - The End" ?
                         <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
                             Next level
                     </Button> : null}
                     <FormDialog handleAnswer={this.handleAnswer} />
                     <HintGiver hints={this.state.currentLevel.hints} />
 
+                    <Sound
+                        url={this.state.currentLevel.music}
+                        playStatus={Sound.status.PLAYING}
+                        playFromPosition={300 /* in milliseconds */}
+                        onLoading={this.handleSongLoading}
+                        onPlaying={this.handleSongPlaying}
+                        onFinishedPlaying={this.handleSongFinishedPlaying}
+                    />
                 </center>
             </div >
         );

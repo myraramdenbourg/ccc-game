@@ -40,6 +40,7 @@ class DialogBox extends React.Component {
     render() {
         if (this.messages !== null && this.state.messageIndex !== -1) {
             const currentMessage = this.messages[this.state.messageIndex];
+            console.log(currentMessage.message);
             return (
                 <div className="DialogWindow">
                     <div className="DialogTitle">{currentMessage.messageTitle}</div>

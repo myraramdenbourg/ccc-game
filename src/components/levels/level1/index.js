@@ -3,6 +3,7 @@ import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import puzzlePng from "./puzzles/Level1Puzzle.png";
+import Dungeon from '../../../music/dungeon.mp3';
 
 const sources = {
   level: levelData,
@@ -15,6 +16,8 @@ const sources = {
 }
 
 const title = "Level 1 - The Beginning";
+
+const music = Dungeon;
 
 const interactions = {
   "Box": {
@@ -69,6 +72,7 @@ export default {
   sources,
   interactions,
   title,
+  music,
   playerStartingPoint,
   answer,
   hints,

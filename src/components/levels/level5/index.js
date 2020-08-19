@@ -2,6 +2,7 @@ import level6 from "../level6";
 import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
+import Dungeon from '../../../music/dungeon.mp3';
 
 const sources = {
     level: levelData,
@@ -14,6 +15,8 @@ const sources = {
 }
 
 const title = "Level 5 - The Evil FAFSA";
+
+const music = Dungeon;
 
 const interactions = {
     "MoneyDoor": {
@@ -79,6 +82,7 @@ const next = level6;
 export default {
     sources,
     title,
+    music,
     interactions,
     playerStartingPoint,
     answer,

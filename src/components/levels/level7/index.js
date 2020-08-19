@@ -4,6 +4,7 @@ import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import monsterPng from "./data/monster.png";
 import monsterTileset from "./data/monster.json";
+import Dungeon from '../../../music/dungeon.mp3';
 
 const sources = {
     level: levelData,
@@ -18,6 +19,8 @@ const sources = {
 }
 
 const title = "Level 7 - Turning in the Application";
+
+const music = Dungeon;
 
 const interactions = {
     "Monster": {
@@ -110,6 +113,7 @@ export default {
     sources,
     title,
     interactions,
+    music,
     playerStartingPoint,
     answer,
     hints,

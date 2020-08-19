@@ -37,3 +37,8 @@
     src: local("Airbnb Cereal App Black"),
       url("%PUBLIC_URL%/fonts/AirbnbCerealBlack.woff") format("woff");
   }
+
+  @font-face {
+    font-family: 'OldSchoolAdventures';
+    src: local('OldSchoolAdventures'), url("./components/fonts/OldSchoolAdventures.ttf") format('truetype');
+  }

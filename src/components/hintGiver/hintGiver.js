@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 
 const HintGiver = ({ hints }) => {
+
     const [clicks, setClicks] = useState(0);
     const [currentHint, setCurrentHint] = useState(0);
     const handleClick = () => {

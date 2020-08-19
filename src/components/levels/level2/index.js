@@ -3,6 +3,7 @@ import levelData from "./data/map.json";
 import tilesetData from "./data/tileset.json";
 import mapPng from "./data/map.png";
 import puzzlePng from "./puzzles/stickynote.png"
+import Dungeon from '../../../music/dungeon.mp3';
 
 const sources = {
     level: levelData,
@@ -13,6 +14,8 @@ const sources = {
         "map.png": mapPng
     }
 }
+
+const music = Dungeon;
 
 const interactions = {
     "Trunk": {
@@ -65,6 +68,7 @@ const next = level3;
 export default {
     sources,
     interactions,
+    music,
     title,
     playerStartingPoint,
     answer,
