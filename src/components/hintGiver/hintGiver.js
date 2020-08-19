@@ -1,29 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 
-const HintGiver = ({ hints }) => {
+class HintGiver extends React.Component {
 
-    const [clicks, setClicks] = useState(0);
-    const [currentHint, setCurrentHint] = useState(0);
-    const handleClick = () => {
-        if (clicks !== 0) {
-            if (currentHint < hints.length - 1) {
-                setCurrentHint(currentHint + 1);
-            } else {
-                setCurrentHint(0);
-            }
+    open;
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: -1 // Start at -1 to allow for the first index to be 0
         }
-        setClicks(clicks + 1);
-    };
-    return (
+        this.open = false;
+    }
 
-        <div >
-            <Button variant="outlined" color="primary" onClick={handleClick}>
-                Need a hint?
-            </Button>
-            <div>{(clicks > 0) && hints[currentHint]}</div>
-        </div>
-    );
-};
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.hints !== this.props.hints) {
+            this.setState({ index: -1 })
+            this.open = false;
+        }
+    };
+
+    handleClick = () => {
+        this.open = true;
+        this.setState({ index: this.state.index + 1 })
+    }
+
+    render = () => {
+        const hints = this.props.hints;
+        return (
+            <div>
+                <Button variant="outlined" color="primary" onClick={this.handleClick}>
+                    Need a hint?
+                </Button>
+                <div>{this.open && hints[this.state.index % hints.length]}</div>
+            </div>
+        );
+    }
+}
 
 export default HintGiver;
