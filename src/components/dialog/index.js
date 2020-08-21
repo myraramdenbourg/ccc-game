@@ -44,7 +44,7 @@ class DialogBox extends React.Component {
             return (
                 <div className="DialogWindow">
                     <div className="DialogTitle">{currentMessage.messageTitle}</div>
-                    <Message message={currentMessage.message} key={this.state.messageIndex} />
+                    <Message message={currentMessage.message} key={currentMessage.message.replace(/ /g, '')} />
                     <div onClick={this.handleClick} className="DialogFooter">
                         Next
                     </div>

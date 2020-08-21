@@ -9,6 +9,7 @@ import HintGiver from "./components/hintGiver/hintGiver";
 import Start from "./components/start/start.js";
 import Timer from 'react-compound-timer'
 import Sound from 'react-sound';
+import Finish from "./components/start/finish.js";
 
 class Main extends React.Component {
 
@@ -57,19 +58,19 @@ class Main extends React.Component {
                             },
                         ]}
                     >
-                        {() => (
-                            <div>
-                                <Timer.Minutes /> minutes
-                                <Timer.Seconds /> seconds
-                            </div>
+                        {({ start, resume, pause, stop, reset, timerState }) => (
+                            <React.Fragment>
+                                <h2 style={{ fontFamily: 'Helvetica Neue' }}>
+                                    <h2 style={{ fontSize: 32, color: "white" }}>
+                                        <Timer.Minutes />:<Timer.Seconds />
+                                    </h2>
+                                </h2>
+                                {/* <button onClick={pause}>Pause</button> */}
+                            </React.Fragment>
                         )}
-                        <h2 style={{ fontFamily: 'Helvetica Neue' }}>
-                            <h2 style={{ fontSize: 32, color: "white" }}>
-                                <Timer.Minutes />:<Timer.Seconds />
-                            </h2>
-                        </h2>
                     </Timer>
                 </center>
+
 
                 <h3>{this.state.currentLevel.title}</h3>
                 <CheckList image={this.state.currentLevel.checklist} />
@@ -94,6 +95,7 @@ class Main extends React.Component {
                         volume={25}
                     />
                 </center>
+
             </div >
         );
     }
