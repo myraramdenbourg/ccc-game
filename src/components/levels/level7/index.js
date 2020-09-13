@@ -27,39 +27,39 @@ const interactions = {
         "type": "message",
         "messages": [
             {
-                "messageTitle": "Collegeboard",
-                "message": "Hello human. I am Collegeboard. I believe you owe me an application."
+                "messageTitle": "CCC University",
+                "message": "Hello human. I am CCC University. I believe you owe me an application."
             },
             {
                 "messageTitle": "Me",
                 "message": "Yes I've finished everything!"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Are you sure? You're telling me that you have "
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Your transcript"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Your test scores"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Your letters of recommendation"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Your essays"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Your resume"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "And your application??"
             },
             {
@@ -67,15 +67,15 @@ const interactions = {
                 "message": "Yes I do!"
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Great. Then answer one last question for me."
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "..."
             },
             {
-                "messageTitle": "Collegeboard",
+                "messageTitle": "CCC University",
                 "message": "Who is always here to support you in the application process?"
             },
         ]
@@ -90,7 +90,7 @@ const playerStartingPoint = {
 const answer = "ccc";
 
 const hints = [
-    "Talk to the monster, I mean Collegeboard.",
+    "Talk to the monster, I mean CCC University.",
     "The answer is CCC.",
 ];
 
@@ -101,7 +101,7 @@ const startingMessages = [
     },
     {
         messageTitle: "Me:",
-        message: "Oh wait it's just Collegeboard."
+        message: "Oh wait it's just CCC University."
     },
 ];
 

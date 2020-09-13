@@ -36,7 +36,7 @@ const interactions = {
             },
             {
                 "messageTitle": "Door",
-                "message": "Where can I find the website for Federal Student Aid?"
+                "message": "If I have social security, where can I find the website for Federal Student Aid?"
             },
         ]
     },
@@ -69,10 +69,6 @@ const startingMessages = [
         messageTitle: "Me:",
         message: "I'm back in the dungeon...but something seems different..I smell gold!"
     },
-    // {
-    //     messageTitle: "Me:",
-    //     message: "I smell gold!"
-    // },
 ];
 
 const checklist = "checklist4";
