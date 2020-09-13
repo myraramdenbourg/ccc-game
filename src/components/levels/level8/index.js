@@ -41,7 +41,7 @@ const hints = [
 const startingMessages = [
     {
         messageTitle: "Me:",
-        message: "This is my kitchen! What am I doing here?"
+        message: "This is my kitchen! What am I doing here? That sink over there looks suspicious..."
     },
 ];
 

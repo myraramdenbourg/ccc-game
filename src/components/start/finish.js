@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Finish() {
+export default function Finish({ time }) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
@@ -48,12 +48,10 @@ export default function Finish() {
             >
                 <Fade in={open}>
                     <div className={classes.paper} >
-                        <h2 id="transition-modal-title">Congratulations!! You escaped </h2>
-                        <p id="transition-modal-description">- Use the arrow keys to move around. </p>
-                        <p id="transition-modal-description">- Use the spacebar or enter key to interact with objects.</p>
-                        <p id="transition-modal-description">- When you think you have an answer, click NEXT LEVEL.</p>
-                        <p id="transition-modal-description">- Do not hit the reset button or all your progress will be lost.</p>
-                        <p id="transition-modal-description">Have fun! Your timer starts NOW!</p>
+                        <h2 id="transition-modal-title">Congratulations!! You escaped high school! </h2>
+                        <p id="transition-modal-description">- Your escape time is: {time} </p>
+                        <p id="transition-modal-description">- Take a screenshot of this page and send it to CCC!</p>
+                        <p id="transition-modal-description">- Thanks for playing!</p>
 
                     </div>
                 </Fade>

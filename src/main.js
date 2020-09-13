@@ -18,6 +18,7 @@ class Main extends React.Component {
         this.state = {
             currentLevel: Levels.level1,
             isPlaying: false,
+            timer: 0
         };
     }
 
@@ -25,6 +26,7 @@ class Main extends React.Component {
         if (answer.toLowerCase() === this.state.currentLevel.answer.toLowerCase()) {
             // go to next level
             this.setState({ currentLevel: this.state.currentLevel.next })
+
         } else {
             alert('Incorrect!');
         }
@@ -58,19 +60,20 @@ class Main extends React.Component {
                             },
                         ]}
                     >
-                        {({ start, resume, pause, stop, reset, timerState }) => (
+                        {({ start, resume, pause, stop, reset, getTimerState, getTime }) => (
                             <React.Fragment>
                                 <h2 style={{ fontFamily: 'Helvetica Neue' }}>
                                     <h2 style={{ fontSize: 32, color: "white" }}>
                                         <Timer.Minutes />:<Timer.Seconds />
                                     </h2>
                                 </h2>
-                                {/* <button onClick={pause}>Pause</button> */}
+                                {/* <button onClick={stop}>Pause</button> */}
+                                {/* <div> {this.state.timer = getTime()}</div> */}
                             </React.Fragment>
                         )}
+
                     </Timer>
                 </center>
-
 
                 <h3>{this.state.currentLevel.title}</h3>
                 <CheckList image={this.state.currentLevel.checklist} />
@@ -82,7 +85,11 @@ class Main extends React.Component {
                         //     <Button onClick={() => this.setState({ currentLevel: this.state.currentLevel.next })} variant="outlined" color="primary">
                         //         Next level
                         // </Button> 
-                        <FormDialog handleAnswer={this.handleAnswer} /> : null}
+                        <FormDialog handleAnswer={this.handleAnswer} /> :
+                        <Button onClick={null} variant="outlined" color="primary">
+                            STOP TIME
+                            {/* <Finish time={this.state.timer} /> */}
+                        </Button>}
 
                     <HintGiver hints={this.state.currentLevel.hints} />
                     <Button onClick={this.handlePlay} variant="outlined" color="primary">
