@@ -31,7 +31,7 @@ const playerStartingPoint = {
     column: 8 // tile
 }
 
-const answer = "college";
+const answer = "escaped";
 
 const hints = [
     "Did you observe the sink?",

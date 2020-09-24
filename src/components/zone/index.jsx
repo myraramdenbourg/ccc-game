@@ -5,6 +5,23 @@ import DialogBox from "../dialog";
 import Tile from "../tile";
 import { DualRing } from "react-css-spinners";
 import PopUp from "../puzzlePopup";
+import { withStyles } from '@material-ui/core/styles';
+
+const themes = (theme) => ({
+    paper: {
+        backgroundColor: 'black',
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+        width: 600,
+        height: 850,
+    },
+    img: {
+        width: 600,
+        height: 800,
+        alignItems: 'center',
+    }
+});
 
 class Zone extends React.Component {
 
@@ -204,6 +221,7 @@ class Zone extends React.Component {
             spinner = null;
         }
 
+        console.log(this.props);
         return (
             <div className="zone-container" style={{ width: this.mapWidth * this.tileWidth, height: this.mapHeight * this.tileHeight }}>
                 {spinner}
@@ -211,8 +229,11 @@ class Zone extends React.Component {
                 {player}
                 <PopUp style={{ position: "absolute" }}
                     open={this.state.popUpImage !== null}
-                    handleClose={() => { this.setState({ popUpImage: null }) }}
-                    image={this.state.popUpImage} />
+                    handleClose={() => { this.setState({ popUpImage: null }) }}>
+                    <div className={this.props.classes.paper}>
+                        <img className={this.props.classes.img} src={this.state.popUpImage}/>
+                    </div>
+                </PopUp>
                 <div style={{
                     width: this.mapWidth * this.tileWidth,
                     height: this.mapHeight * this.tileHeight,
@@ -239,4 +260,4 @@ class Zone extends React.Component {
     }
 }
 
-export default Zone;
+export default withStyles(themes)(Zone);
