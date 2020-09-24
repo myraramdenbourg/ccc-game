@@ -48,7 +48,7 @@ export default function Finish({ time }) {
             >
                 <Fade in={open}>
                     <div className={classes.paper} >
-                        <h2 id="transition-modal-title">Congratulations!! You escaped high school! </h2>
+                        <h2 id="transition-modal-title">Congratulations!! You escaped high school and are on your way to college! </h2>
                         <p id="transition-modal-description">- Your escape time is: {time} </p>
                         <p id="transition-modal-description">- Take a screenshot of this page and send it to CCC!</p>
                         <p id="transition-modal-description">- Thanks for playing!</p>
