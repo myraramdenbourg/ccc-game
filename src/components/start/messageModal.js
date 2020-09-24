@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Start() {
+export default function MessageModal(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
@@ -38,24 +38,16 @@ export default function Start() {
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 className={classes.modal}
-                open={open}
+                open={open || props.override}
                 onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
                     timeout: 500,
-                }}
-            >
-                <Fade in={open}>
+                }}>
+                <Fade in={open || props.override}>
                     <div className={classes.paper} >
-                        <h2 id="transition-modal-title">ESCAPE HIGH SCHOOL</h2>
-                        <h4 id="transition-modal-description">Rules: </h4>
-                        <p id="transition-modal-description">- Use the arrow keys to move around. </p>
-                        <p id="transition-modal-description">- Use the spacebar or enter key to interact with objects.</p>
-                        <p id="transition-modal-description">- When you think you have an answer, click NEXT LEVEL.</p>
-                        <p id="transition-modal-description">- Do not hit the reset button or all your progress will be lost.</p>
-                        <p id="transition-modal-description">Have fun! Your timer starts NOW!</p>
-
+                        {props.children}
                     </div>
                 </Fade>
             </Modal>

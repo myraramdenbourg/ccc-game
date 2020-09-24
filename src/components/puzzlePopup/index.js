@@ -12,19 +12,6 @@ const styles = (theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    paper: {
-        backgroundColor: 'black',
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-        width: 600,
-        height: 850,
-    },
-    img: {
-        width: 600,
-        height: 800,
-        alignItems: 'center',
     }
 });
 
@@ -54,9 +41,7 @@ class PopUp extends React.Component {
                         timeout: 500,
                     }}>
                     <Fade in={this.props.open}>
-                        <div className={classes.paper}>
-                            <img className={classes.img} src={this.props.image}/>
-                        </div>
+                        {this.props.children}
                     </Fade>
                 </Modal>
             </div>
